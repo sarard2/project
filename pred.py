@@ -188,18 +188,19 @@ if selected=="RFM":
         st.write("The client you have selected is",segments)
         segments2=selectedclient2["Segment"].values[0]
         st.write("The client you have selected is",segments2)
-    clientsales=sales[sales["Client"].isin(client_select)]
+    col1,col2=st.columns(2)
+    with col1:
+        clientsales=sales[sales["Client"].isin(client_select)]
     clientsales2=sales[sales["Client"].isin(client_select2)]
     grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
     grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()
     figure=px.line(grouped_sales,x="TransDate",y="Revenue")
-    #figure.add_scatter(x=grouped_sales2["TransDate"],y=grouped_sales2["Revenue"])
-    st.plotly_chart(figure)
+    
+    with col2:
+        st.plotly_chart(figure)
     figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
-    #figure.add_scatter(x=grouped_sales2["TransDate"],y=grouped_sales2["Revenue"])
     st.plotly_chart(figure1)
-
-
+        
 #ARM page
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
