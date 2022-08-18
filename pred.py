@@ -147,11 +147,8 @@ if selected=="RFM":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-    
-    
-    rfm=pd.read_csv("rfm.csv")
-    
-               
+     
+    rfm=pd.read_csv("rfm.csv")           
     col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
     with col1:
         client1=df["Client"].unique().tolist()
@@ -182,8 +179,7 @@ if selected=="RFM":
         st.metric(label="Revenue", value=monetary_value2)
     with col8:
         #overall_value2=selectedclient2["OverallScore"]
-        #st.metric(label="Overall Score", value=overall_value2)
-        
+        #st.metric(label="Overall Score", value=overall_value2)  
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have selected is",segments)
         segments2=selectedclient2["Segment"].values[0]
