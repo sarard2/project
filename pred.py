@@ -192,12 +192,32 @@ if selected=="RFM":
         st.write("hi..............")
         st.markdown(""" 
         <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
+          <div class="card-header">Recency</div>
           <div class="card-body">
             <h5 class="card-title">Light card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
          </div>  """,unsafe_allow_html=True)
+    with col2:
+        st.markdown(""" 
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">Frequency</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+         </div>  """,unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown(""" 
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">Monetary</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+         </div>  """,unsafe_allow_html=True)
+        
     col1,col2=st.columns(2)
     with col1:
         #st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
