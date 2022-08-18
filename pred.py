@@ -179,13 +179,10 @@ if selected=="RFM":
     st.plotly_chart(figure1)
 
 
-
-
-
 #ARM page
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
-    AgGrid(rules)
+   AgGrid(rules)
 #Prediction page
 if selected=="Prediction":
     col1,col2=st.columns([1,2])
