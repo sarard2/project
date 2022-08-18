@@ -236,22 +236,24 @@ if selected=="Prediction":
         st.write("This page focuses on...")
         itemkinds=sales["ItemKind"].unique().tolist()
         sales['TransDate'] = pd.to_datetime(sales['TransDate'])
-        grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
-        grouped_df.columns=["ds","kind","y"]
-        prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
-        #st.dataframe(prediction)
-        # define the model
-        model = Prophet()
-        # fit the model
-        model.fit(prediction)
-        from datetime import datetime
-        # Create the pandas DataFrame with column name is provided explicitly
-        future = pd.DataFrame(data, columns=['ds'])
-        # use the model to make a forecast
-        forecast = model.predict(future)
+        
         
     st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
+    
+    grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
+    grouped_df.columns=["ds","kind","y"]
+        
+    
     kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
+    prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
+    model = Prophet()
+    model.fit(prediction)
+    from datetime import datetime
+    # Create the pandas DataFrame with column name is provided explicitly
+    future = pd.DataFrame(data, columns=['ds'])
+    # use the model to make a forecast
+    forecast = model.predict(future)
+    
     data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
     forecastime=st.slider("Choose forecast days",5,35,20)
     
