@@ -253,6 +253,7 @@ if selected=="Prediction":
         data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
         future = pd.DataFrame(data, columns=['ds'])
         forecast = model.predict(future)
+        forecast['ds'] = pd.to_datetime(forecast['ds'])
         st.dataframe(forecast[["ds","yhat"]])
     
     
