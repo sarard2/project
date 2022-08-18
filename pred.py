@@ -288,16 +288,15 @@ if selected=="ARM":
         if x >= 1:
             return 1
     my_basket_sets = mybasket.applymap(my_encode_units)
-    #As apriori doesn't accept any missing values, need to double check through dropping any missing values
     
     #Only transactions that have more than 1 product in them are included in apriori to find more accurate association relationships
     basket_filter=my_basket_sets[(my_basket_sets>0).sum(axis=1)>=2]
+    
     my_frequent_itemsets = apriori(basket_filter, min_support=0.0007, use_colnames=True).sort_values('support',ascending=False).reset_index(drop=True)
     my_frequent_itemsets['length']=my_frequent_itemsets['itemsets'].apply(lambda x: len(x))
+    
     assoc_rules = association_rules(my_frequent_itemsets, metric="lift", min_threshold=1).sort_values("lift",ascending=False).reset_index(drop=True)
     rules=assoc_rules[["antecedents","consequents","support","confidence","lift"]]
-    assoc_rules[ (assoc_rules['lift'] >= 6) & (assoc_rules['confidence'] >= 0.8) ]
-
 #Prediction page
 if selected=="Prediction":
     col1,col2=st.columns([1,2])
