@@ -247,9 +247,9 @@ if selected=="Prediction":
     prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
     model = Prophet()
     model.fit(prediction)
-    
-    data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
     forecastime=st.slider("Choose forecast days",5,35,20)
+    data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
+    
     
     future = pd.DataFrame(data, columns=['ds'])
     forecast = model.predict(future)
