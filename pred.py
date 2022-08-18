@@ -157,13 +157,14 @@ if selected=="RFM":
     with col2:
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
+        segments2=selectedclient2["Segment"].values[0]
         st.write("The client you have selected is",segments)
         
     with col3:
         client2=df["Client"].unique().tolist()
         client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
     with col4:
-        segments2=selectedclient2["Segment"].values[0]
+        
         st.write("The client you have selected is",segments2)
                   
     col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
