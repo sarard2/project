@@ -71,7 +71,7 @@ col1,col2,col3=st.columns([1,3,1])
 with col1:
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
 with col2:
-    selected = option_menu(None, ["Overview","Analysis","RFM","ARM","Prediction"],
+    selected = option_menu(None, ["Overview","RFM","ARM","Prediction"],
     icons=['house', 'cloud-upload', "list-task", 'gear'],
     menu_icon="cast", default_index=0,orientation="horizontal",
     styles={
@@ -84,9 +84,9 @@ with col3:
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
 
 
-
 #Overview page
 if selected=="Overview":
+    
     #df_sample=df.sample(frac=0.2)
     #st.dataframe(df)
     #AgGrid(df_sample)
@@ -97,76 +97,6 @@ if selected=="Overview":
          st.dataframe(df)
 
 
-#Analysis page
-if selected=="Analysis":
-
-    st.write("Analysis Page")
-    df["RemainingQuantity"]=df["PreviousQuantity"]+df["ActualQuantity"]
-    items=df["ItemName"].unique().tolist()
-    item_select=st.multiselect("Which Item are you interested in?",items,"sandal-red-5")
-    selection=df[df["ItemName"].isin(item_select)]
-    #purchase=selection[(selection["InvoiceType"]=="Purchase")|(selection["InvoiceType"]=="Sales")]
-    purchase=selection[(selection["InvoiceType"]=="Purchase")]
-    #purchase=selection
-    #purchase=selection[selection["InvoiceType"]=="Purchase"|(selection["InvoiceType"]=="Sales")]
-    #lastvalue=purchase.groupby(["TransDate","InvoiceType"])["PreviousQuantity"].last()
-    lastvalue=purchase.groupby("TransDate")["Quantity"].last()
-
-    sales=selection[selection["InvoiceType"]=="Sales"]
-    trying=sales.groupby(["TransDate","InvoiceType"])["Quantity"].sum()
-    trying=trying.reset_index()
-    trying.columns=["TransDate","InvoiceType","Quantity"]
-    trying['TransDate'] = pd.to_datetime(trying['TransDate'])
-    trying_sorted=trying.sort_values(by=["TransDate"])
-    st.dataframe(trying_sorted)
-
-    last=pd.DataFrame(lastvalue)
-    last=last.reset_index()
-    last.columns=["TransDate","PreviousQuantity"]
-    last['TransDate'] = pd.to_datetime(last['TransDate'])
-    last_sorted=last.sort_values(by=["TransDate"])
-    st.write(last_sorted)
-    trying=pd.DataFrame(trying)
-
-
-    #New figure
-    purchaser=selection[(selection["InvoiceType"]=="Purchase")]
-    tryinggg=purchaser.groupby("TransDate")["Quantity"].sum()
-    trial=pd.DataFrame(tryinggg)
-    trial=trial.reset_index()
-    trial.columns=["TransDate","Quantity"]
-    trial['TransDate'] = pd.to_datetime(trial['TransDate'])
-    trial_sortedd=trial.sort_values(by=["TransDate"])
-
-
-
-    lastt=selection.groupby("TransDate")["RemainingQuantity"].last()
-    lasttt=pd.DataFrame(lastt)
-    lasttt=lasttt.reset_index()
-    lasttt.columns=["TransDate","RemainingQuantity"]
-    lasttt['TransDate'] = pd.to_datetime(lasttt['TransDate'])
-    last_sortedd=lasttt.sort_values(by=["TransDate"])
-    st.dataframe(last_sortedd)
-
-    figure1=px.line(last_sorted,x="TransDate",y="PreviousQuantity")
-    #figure2=(trying,x="TransDate",y="Quantity")
-    figure1.add_scatter(x=trying_sorted["TransDate"],y=trying_sorted["Quantity"])
-
-    figure2=px.line(last_sortedd,x="TransDate",y="RemainingQuantity")
-    figure2.add_scatter(x=trying_sorted["TransDate"],y=trying_sorted["Quantity"])
-    figure2.add_scatter(x=trial_sortedd["TransDate"],y=trial_sortedd["Quantity"])
-
-
-    #st.plotly_chart(figure1)
-    st.plotly_chart(figure2)
-    #Shows summary about Item
-
-    totalsales=selection["Quantity"].sum()
-    st.metric(label="hi",value=totalsales)
-    inventory=selection["ActualQuantity"].sum()
-    st.metric(label="Inventory",value=inventory)
-
-    #figure=px.bar(selection,x='Item',y="Quantity")
 
 
 #RFM page
@@ -256,10 +186,37 @@ if selected=="RFM":
     rfm.loc[rfm['OverallScore']>2,'Segment'] = 'Mid-Value'
     rfm.loc[rfm['OverallScore']>4,'Segment'] = 'High-Value'
 
-    col1,col2,col3=st.columns([2,1,2])
+
+    col1,col2,col3=st.columns(3)
     with col1:
-        st.write("This section talks about...")
-        st.write("hi..............")
+        st.markdown(""" 
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">Recency</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+         </div>  """,unsafe_allow_html=True)
+    with col2:
+        st.markdown(""" 
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">Frequency</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+         </div>  """,unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown(""" 
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header">Monetary</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+         </div>  """,unsafe_allow_html=True)
+        
     col1,col2=st.columns(2)
     with col1:
         #st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
@@ -318,24 +275,7 @@ if selected=="RFM":
 
 
 #ARM page
-if selected=="ARM":
-    col1,col2=st.columns(2)
-    with col1:
-        st.write("ARM Page")
-        st.write("This page focuses on...")
-        st.write("this page is...")
-        invoices=df["InvoiceID"].unique().tolist()
-        invoice_select=st.multiselect("Which invoice are you interested in reviewing?",invoices,100777442)
-        filtered=df[df["InvoiceID"].isin(invoice_select)]
-        #type=filtered[filtered["InvoiceType"]].value()
-        #st.write(type)
-
-
-    st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-    figure=px.bar(filtered,y='ItemName',x="Quantity")
-    st.plotly_chart(figure)
-    
-    
+if selected=="ARM": 
     #Loading needed libraries for this section
     from mlxtend.frequent_patterns import apriori
     from mlxtend.frequent_patterns import association_rules
@@ -348,17 +288,14 @@ if selected=="ARM":
         if x >= 1:
             return 1
     my_basket_sets = mybasket.applymap(my_encode_units)
-    #As apriori doesn't accept any missing values, need to double check through dropping any missing values
-    
+    my_basket_sets.dropna(0,inplace=True)
     #Only transactions that have more than 1 product in them are included in apriori to find more accurate association relationships
     basket_filter=my_basket_sets[(my_basket_sets>0).sum(axis=1)>=2]
     my_frequent_itemsets = apriori(basket_filter, min_support=0.0007, use_colnames=True).sort_values('support',ascending=False).reset_index(drop=True)
     my_frequent_itemsets['length']=my_frequent_itemsets['itemsets'].apply(lambda x: len(x))
+    
     assoc_rules = association_rules(my_frequent_itemsets, metric="lift", min_threshold=1).sort_values("lift",ascending=False).reset_index(drop=True)
     rules=assoc_rules[["antecedents","consequents","support","confidence","lift"]]
-    assoc_rules[ (assoc_rules['lift'] >= 6) & (assoc_rules['confidence'] >= 0.8) ]
-    st.dataframe(rules)
-
 #Prediction page
 if selected=="Prediction":
     col1,col2=st.columns([1,2])
