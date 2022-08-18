@@ -82,6 +82,8 @@ with col2:
     })
 with col3:
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
+
+st.markdown("""   
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
@@ -113,7 +115,8 @@ with col3:
       <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
     </div>
   </div>
-</div>
+</div> 
+""",unsafe_allow_html=True)
     
 
 
