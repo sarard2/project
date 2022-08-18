@@ -150,11 +150,6 @@ if selected=="RFM":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-    st.markdown("""
-    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
-      Popover on top 
-     </button>""",unsafe_allow_html=True)
-
     
     rfm=pd.read_csv("rfm.csv") 
     client1=df["Client"].unique().tolist()
@@ -278,4 +273,8 @@ if selected=="Prediction":
         fig1.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig1)
 
-      
+    st.markdown("""
+    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+      Popover on top 
+     </button>""",unsafe_allow_html=True)
+  
