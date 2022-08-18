@@ -147,12 +147,17 @@ if selected=="RFM":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-     
-    rfm=pd.read_csv("rfm.csv")           
-    col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
+    
+    col1,col2,col3,col4=st.columns(4)
     with col1:
         client1=df["Client"].unique().tolist()
         client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
+    with col3:
+        client2=df["Client"].unique().tolist()
+        client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
+    rfm=pd.read_csv("rfm.csv")           
+    col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
+    with col1:
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         recency_value=selectedclient["Recency"]
         st.metric(label="Recency", value=recency_value)
@@ -166,8 +171,7 @@ if selected=="RFM":
         #overall_value=selectedclient["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value)
     with col5:
-        client2=df["Client"].unique().tolist()
-        client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
+        
         selectedclient2=rfm[rfm["Client"].isin(client_select2)]
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
