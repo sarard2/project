@@ -83,15 +83,12 @@ with col3:
 
 #Overview page
 if selected=="Overview":
-    
-    #df_sample=df.sample(frac=0.2)
-    #st.dataframe(df)
-    #AgGrid(df_sample)
+    AgGrid(df)
     col1,col2=st.columns(2)
     with col1:
         st.write("Project Overview")
     with st.expander("Have a look at the dataset format!"):
-         st.dataframe(df)
+    AgGrid(df)
 
 
 #RFM page
@@ -192,7 +189,7 @@ if selected=="RFM":
 #ARM page
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
-   st.write(rules)
+    AgGrid(rules)
 #Prediction page
 if selected=="Prediction":
     col1,col2=st.columns([1,2])
