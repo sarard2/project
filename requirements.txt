@@ -1,0 +1,11 @@
+matplotlib
+pandas
+numpy
+plotly
+datetime
+seaborn
+streamlit
+streamlit-option-menu
+sklearn
+stan
+prophet>=1.1
