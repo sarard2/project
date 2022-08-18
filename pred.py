@@ -83,12 +83,8 @@ with col3:
 
 #Overview page
 if selected=="Overview":
-    AgGrid(df)
-    col1,col2=st.columns(2)
-    with col1:
-        st.write("Project Overview")
     with st.expander("Have a look at the dataset format!"):
-    AgGrid(df)
+        AgGrid(df)
 
 
 #RFM page
