@@ -151,9 +151,9 @@ if selected=="RFM":
     </div>
     """,unsafe_allow_html=True)
     st.markdown("""
-    <p class="placeholder-glow">
-     <span class="placeholder col-12"></span>
-    </p>""",unsafe_allow_html=True)
+    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+      Popover on top 
+     </button>""",unsafe_allow_html=True)
 
     
     rfm=pd.read_csv("rfm.csv") 
