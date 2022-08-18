@@ -21,7 +21,7 @@ sales=df[df["InvoiceType"]=="Sales"]
 purhases=df[df["InvoiceType"]=="Purchase"]
 returnsales=df[df["InvoiceType"]=="Return Sales"]
 #An additional column would represent the Revenue column and is created based on Dollar Sales rather than LBP Sales.
-sales["Revenue"] = sales["Quantity"]*sales["SalesDollar"].round(decimals=0)
+sales["Revenue"] = sales["Quantity"]*sales["SalesDollar"]
 
 
 
