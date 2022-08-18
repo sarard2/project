@@ -297,8 +297,6 @@ if selected=="ARM":
     assoc_rules = association_rules(my_frequent_itemsets, metric="lift", min_threshold=1).sort_values("lift",ascending=False).reset_index(drop=True)
     rules=assoc_rules[["antecedents","consequents","support","confidence","lift"]]
     assoc_rules[ (assoc_rules['lift'] >= 6) & (assoc_rules['confidence'] >= 0.8) ]
-    
-    st.dataframe(my_frequent_itemsets)
 
 #Prediction page
 if selected=="Prediction":
