@@ -291,7 +291,7 @@ if selected=="ARM":
     
     #Only transactions that have more than 1 product in them are included in apriori to find more accurate association relationships
     basket_filter=my_basket_sets[(my_basket_sets>0).sum(axis=1)>=2]
-    
+    basket_filter.dropna(inplace=True)
     my_frequent_itemsets = apriori(basket_filter, min_support=0.0007, use_colnames=True).sort_values('support',ascending=False).reset_index(drop=True)
     my_frequent_itemsets['length']=my_frequent_itemsets['itemsets'].apply(lambda x: len(x))
     
