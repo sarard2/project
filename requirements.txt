@@ -8,5 +8,6 @@ streamlit
 streamlit-option-menu
 sklearn
 mlxtend
+streamlit-agGrid
 pystan
 prophet>=1.1
