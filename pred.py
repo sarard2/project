@@ -255,12 +255,10 @@ if selected=="Prediction":
         forecast = model.predict(future)
     
     
-    col1,col2=st.columns(2)
-    with col1:
+    col1,col2,col3=st.columns(3)
+    with col2:
         fig2=plot_plotly(model, forecast)
         st.plotly_chart(fig2)
-        
-    with col2:
         fig1=plot_components_plotly(model, forecast)
         st.plotly_chart(fig1)
 
