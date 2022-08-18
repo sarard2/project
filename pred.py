@@ -199,7 +199,8 @@ if selected=="RFM":
 
 
     #Need to calculate revenue for each customer in order to know the monetary score of each customer
-    rev_df = sales.groupby('Client').Revenue.sum().reset_index()
+    rev_df = sales.groupby('Client').Revenue.sum()
+    rev_df.reset_index()
 
     #The revenue dataframe is then merged with the unique clients dataframe through clients.
     rfm_df3= pd.merge(rfm_df2, rev_df, on='Client',how="inner")
