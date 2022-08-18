@@ -150,23 +150,21 @@ if selected=="RFM":
     """,unsafe_allow_html=True)
     
     rfm=pd.read_csv("rfm.csv") 
+    client1=df["Client"].unique().tolist()
+    client2=df["Client"].unique().tolist()
+    selectedclient=rfm[rfm["Client"].isin(client_select)]
+    selectedclient2=rfm[rfm["Client"].isin(client_select2)]
+    segments=selectedclient["Segment"].values[0]
+    segments2=selectedclient2["Segment"].values[0]
     
     col1,col2,col3,col4=st.columns(4)
     with col1:
-        client1=df["Client"].unique().tolist()
-        client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
-        selectedclient2=rfm[rfm["Client"].isin(client_select2)]
-    with col2:
-        selectedclient=rfm[rfm["Client"].isin(client_select)]
-        segments=selectedclient["Segment"].values[0]
-        segments2=selectedclient2["Segment"].values[0]
-        st.write("The client you have selected is",segments)
-        
+        client_select=st.multiselect("Choose first customer:",client1,"Tyrone Wright")
+    with col2:     
+        st.write("The client you have selected is",segments)   
     with col3:
-        client2=df["Client"].unique().tolist()
-        client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
-    with col4:
-        
+        client_select2=st.multiselect("Choose another customer:",client2,"Peter Smith")
+    with col4: 
         st.write("The client you have selected is",segments2)
                   
     col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
