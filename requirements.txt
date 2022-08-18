@@ -7,5 +7,5 @@ seaborn
 streamlit
 streamlit-option-menu
 sklearn
-stan
+pystan
 prophet>=1.1
