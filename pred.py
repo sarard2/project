@@ -60,7 +60,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 #Setting Default Theme for plotly graphs
-pio.templates.default = "simple_white"
+#pio.templates.default = "simple_white"
 
 
 #Sidebar Menu
