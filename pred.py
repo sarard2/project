@@ -37,13 +37,13 @@ st.markdown("""
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="MSBA.png" class="d-block w-100" alt="First">
+      <img src="home.jpg" class="d-block w-100" alt="First">
     </div>
     <div class="carousel-item">
-      <img src="MSBA.png" class="d-block w-100" alt="Middle">
+      <img src="home.jpg" class="d-block w-100" alt="Middle">
     </div>
     <div class="carousel-item">
-      <img src="MSBA.png" class="d-block w-100" alt="Last">
+      <img src="home.jpg" class="d-block w-100" alt="Last">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
