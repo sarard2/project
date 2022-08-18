@@ -83,14 +83,6 @@ st.markdown("""
 </nav>
 """, unsafe_allow_html=True)
 
-st.markdown("""<ul class="list-group list-group-flush">
-  <li class="list-group-item">An item</li>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
-</ul>
-""",unsafe_allow_html=True)
 
 #Setting Default Theme for plotly graphs
 #pio.templates.default = "simple_white"
@@ -217,6 +209,14 @@ if selected=="RFM":
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
    AgGrid(rules)
+   st.markdown("""
+   <ul class="list-group list-group-flush">
+     <li class="list-group-item">An item</li>
+     <li class="list-group-item">A second item</li>
+     <li class="list-group-item">A third item</li>
+     <li class="list-group-item">A fourth item</li>
+     <li class="list-group-item">And a fifth one</li>
+     </ul>""",unsafe_allow_html=True)
 #Prediction page
 if selected=="Prediction":
     col1,col2=st.columns([1,2])
