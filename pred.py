@@ -342,7 +342,7 @@ if selected=="ARM":
     from mlxtend.frequent_patterns import apriori
     from mlxtend.frequent_patterns import association_rules
     #Need to create my basket dataframe which shows products in the following format, it will return 0 if product is not in the Invoice, and a number representing quantity if included
-    mybasket = (saless.groupby(['InvoiceID', 'Item'])['Quantity']
+    mybasket = (sales.groupby(['InvoiceID', 'Item'])['Quantity']
           .sum().unstack().reset_index().fillna(0)
           .set_index('InvoiceID'))
     #Need to convert all positive values to 1 and all other to 0 as the quantity is not important over here, what is important is the presence/absence of product in Invoice
