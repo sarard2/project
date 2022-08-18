@@ -372,7 +372,8 @@ if selected=="Prediction":
         itemkinds=sales["ItemKind"].unique().tolist()
         kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
         sales['TransDate'] = pd.to_datetime(sales['TransDate'])
-        grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
+        grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum()
+        grouped_df.reset_index()
         #prediction= sales.groupby('TransDate').Revenue.sum().reset_index()
         #prediction.columns=["ds","y"]
         grouped_df.columns=["ds","kind","y"]
