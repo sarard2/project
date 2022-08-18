@@ -136,7 +136,7 @@ if selected=="RFM":
         
     col1,col2=st.columns(2)
     with col1:
-        rfm=pd.read_csv(rfm.csv)
+        rfm=pd.read_csv("rfm.csv")
         #st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
         #st.dataframe(selectedclient)
         client1=df["Client"].unique().tolist()
