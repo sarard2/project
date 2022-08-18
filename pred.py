@@ -150,6 +150,11 @@ if selected=="RFM":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
+    st.markdown("""
+    <p class="placeholder-glow">
+     <span class="placeholder col-12"></span>
+    </p>""",unsafe_allow_html=True)
+
     
     rfm=pd.read_csv("rfm.csv") 
     client1=df["Client"].unique().tolist()
