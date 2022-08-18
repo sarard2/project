@@ -148,14 +148,23 @@ if selected=="RFM":
     </div>
     """,unsafe_allow_html=True)
     
+    rfm=pd.read_csv("rfm.csv") 
+    
     col1,col2,col3,col4=st.columns(4)
     with col1:
         client1=df["Client"].unique().tolist()
         client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
+    with col2:
+        segments=selectedclient["Segment"].values[0]
+        st.write("The client you have selected is",segments)
+        
     with col3:
         client2=df["Client"].unique().tolist()
         client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
-    rfm=pd.read_csv("rfm.csv")           
+    with col4:
+        segments2=selectedclient2["Segment"].values[0]
+        st.write("The client you have selected is",segments2)
+                  
     col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
     with col1:
         selectedclient=rfm[rfm["Client"].isin(client_select)]
@@ -170,8 +179,7 @@ if selected=="RFM":
     #with col4:
         #overall_value=selectedclient["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value)
-    with col5:
-        
+    with col5: 
         selectedclient2=rfm[rfm["Client"].isin(client_select2)]
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
@@ -184,22 +192,19 @@ if selected=="RFM":
     with col8:
         #overall_value2=selectedclient2["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value2)  
-        segments=selectedclient["Segment"].values[0]
-        st.write("The client you have selected is",segments)
-        segments2=selectedclient2["Segment"].values[0]
-        st.write("The client you have selected is",segments2)
+    
     col1,col2=st.columns(2)
     with col1:
         clientsales=sales[sales["Client"].isin(client_select)]
-    clientsales2=sales[sales["Client"].isin(client_select2)]
-    grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
-    grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()
-    figure=px.line(grouped_sales,x="TransDate",y="Revenue")
+        clientsales2=sales[sales["Client"].isin(client_select2)]
+        grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
+        grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()
+        figure=px.line(grouped_sales,x="TransDate",y="Revenue")
+        st.plotly_chart(figure)
     
     with col2:
-        st.plotly_chart(figure)
-    figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
-    st.plotly_chart(figure1)
+        figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
+        st.plotly_chart(figure1)
         
 #ARM page
 if selected=="ARM": 
