@@ -1,16 +1,13 @@
 import pandas as pd
 import streamlit as st
-
+import matplotlib as plt
 import numpy
 from streamlit_option_menu import option_menu
-#from st_aggrid import AgGrid
+from st_aggrid import AgGrid
 import plotly
 import plotly.graph_objects as go
 import plotly.express as px
-import plotly.io as pio
-import matplotlib as plt
 from prophet import Prophet
-from sklearn.metrics import mean_absolute_error
 
 #Setting page width to wide
 st.set_page_config(layout="wide")
