@@ -253,7 +253,7 @@ if selected=="Prediction":
         data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
         future = pd.DataFrame(data, columns=['ds'])
         forecast = model.predict(future)
-        st.dataframe(forecast)
+        st.dataframe(forecast[["ds","yhat"]])
     
     
     col1,col2,col3=st.columns([2,1,2])
