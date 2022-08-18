@@ -84,7 +84,8 @@ with col3:
 #Overview page
 if selected=="Overview":
     with st.expander("Have a look at the dataset format!"):
-        AgGrid(df)
+        df_sample=df.sample(frac=0.25)
+        AgGrid(df_sample)
 
 
 #RFM page
