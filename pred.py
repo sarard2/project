@@ -155,6 +155,7 @@ if selected=="RFM":
         client1=df["Client"].unique().tolist()
         client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
     with col2:
+        selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have selected is",segments)
         
@@ -167,7 +168,6 @@ if selected=="RFM":
                   
     col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
     with col1:
-        selectedclient=rfm[rfm["Client"].isin(client_select)]
         recency_value=selectedclient["Recency"]
         st.metric(label="Recency", value=recency_value)
     with col2:
