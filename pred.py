@@ -185,7 +185,7 @@ if selected=="RFM":
     rfm['Segment'] = 'Low-Value'
     rfm.loc[rfm['OverallScore']>2,'Segment'] = 'Mid-Value'
     rfm.loc[rfm['OverallScore']>4,'Segment'] = 'High-Value'
-    st.write("This section talks about...")
+
 
     col1,col2,col3=st.columns(3)
     with col1:
