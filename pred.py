@@ -155,10 +155,6 @@ if selected=="RFM":
     client1=df["Client"].unique().tolist()
     client2=df["Client"].unique().tolist()
     
-    
-    
-    
-    
     col1,col2,col3,col4=st.columns(4)
     with col1:
         client_select=st.multiselect("Choose first customer:",client1,"Tyrone Wright")
@@ -187,7 +183,6 @@ if selected=="RFM":
         #overall_value=selectedclient["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value)
     with col5: 
-        
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
     with col6:
@@ -210,10 +205,16 @@ if selected=="RFM":
     
     with col1:
         figure=px.line(grouped_sales,x="TransDate",y="Revenue")
+        figure.update_layout(xaxis_title="Date",yaxis_title="Revenue")
+        figure.update_xaxes(showgrid=False,zeroline=False)
+        figure.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(figure)
     
     with col2:
         figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
+        figure1.update_layout(xaxis_title="Date",yaxis_title="Revenue")
+        figure1.update_xaxes(showgrid=False,zeroline=False)
+        figure1.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(figure1)
         
 #ARM page
@@ -261,7 +262,7 @@ if selected=="Prediction":
     col1,col2,col3=st.columns([2,1,2])
     with col2:
         fig2=plot_plotly(model, forecast)
-        fig2.update_layout(xaxis_title="Date",yaxis_title="Revenue")
+        fig2.update_layout(xaxis_title="",yaxis_title="Revenue")
         fig2.update_xaxes(showgrid=False,zeroline=False)
         fig2.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig2)
