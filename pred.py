@@ -193,7 +193,7 @@ if selected=="RFM":
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have selected is",segments)
         segments2=selectedclient2["Segment"].values[0]
-        st.write("The client you have selected is",segments2)
+        st.write("The client you have selected is",segments2, "as the client has an overall value", overall_value2)
     clientsales=sales[sales["Client"].isin(client_select)]
     clientsales2=sales[sales["Client"].isin(client_select2)]
     grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
