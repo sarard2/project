@@ -142,6 +142,7 @@ if selected=="RFM":
           <a href="#" class="card-link">Another link</a>
          </div>
         </div>  """,unsafe_allow_html=True)
+    
     st.write("")
     st.markdown("""
     <div class="alert alert-secondary" role="alert">
@@ -154,6 +155,7 @@ if selected=="RFM":
     with col1:
         client1=df["Client"].unique().tolist()
         client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
+        selectedclient2=rfm[rfm["Client"].isin(client_select2)]
     with col2:
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
@@ -181,7 +183,7 @@ if selected=="RFM":
         #overall_value=selectedclient["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value)
     with col5: 
-        selectedclient2=rfm[rfm["Client"].isin(client_select2)]
+        
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
     with col6:
