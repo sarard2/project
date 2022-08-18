@@ -33,10 +33,7 @@ st.markdown("""
 </style>
 """,unsafe_allow_html=True)
 
-#st.markdown("""
-#<div class="alert alert-secondary" role="alert">
-#</div>
-#""",unsafe_allow_html=True)
+
 
 #This is to show the upper banner with links
 st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
@@ -100,10 +97,46 @@ if selected=="RFM":
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
     #Thus, only sales dataframe is considered.
 
+    st.markdown("""
+    <div class="alert alert-secondary" role="alert">
+    </div>
+    """,unsafe_allow_html=True)
     
-    col1,col2,col3=st.columns(3)
-   
+    col1,col2,col3,col4=st.columns(4)
+    with col1:
+        st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Recency</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Customer Visits</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
     with col2:
+        st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Recency</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Customer Visits</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
+    with col3:
+        st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Recency</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Customer Visits</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
+    with col4:
         st.markdown(""" 
         <div class="card" style="width: 18rem;">
           <div class="card-body">
