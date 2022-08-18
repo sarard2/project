@@ -96,11 +96,6 @@ if selected=="RFM":
 
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
     #Thus, only sales dataframe is considered.
-
-    st.markdown("""
-    <div class="alert alert-secondary" role="alert">
-    </div>
-    """,unsafe_allow_html=True)
     
     col1,col2,col3,col4=st.columns(4)
     with col1:
@@ -148,7 +143,11 @@ if selected=="RFM":
          </div>
         </div>  """,unsafe_allow_html=True)
     
-        
+    st.markdown("""
+    <div class="alert alert-secondary" role="alert">
+    </div>
+    """,unsafe_allow_html=True)
+    
     col1,col2=st.columns(2)
     with col1:
         rfm=pd.read_csv("rfm.csv")
