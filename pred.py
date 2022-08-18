@@ -338,13 +338,13 @@ if selected=="ARM":
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
     figure=px.bar(filtered,y='ItemName',x="Quantity")
     st.plotly_chart(figure)
+    
+    
     #Loading needed libraries for this section
     from mlxtend.frequent_patterns import apriori
     from mlxtend.frequent_patterns import association_rules
     #Need to create my basket dataframe which shows products in the following format, it will return 0 if product is not in the Invoice, and a number representing quantity if included
-    mybasket = (sales.groupby(['InvoiceID', 'Item'])['Quantity']
-          .sum().unstack().reset_index().fillna(0)
-          .set_index('InvoiceID'))
+    mybasket = (sales.groupby(['InvoiceID', 'Item'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceID'))
     #Need to convert all positive values to 1 and all other to 0 as the quantity is not important over here, what is important is the presence/absence of product in Invoice
     def my_encode_units(x):
         if x <= 0:
