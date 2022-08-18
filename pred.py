@@ -91,6 +91,11 @@ if selected=="Overview":
 
 #RFM page
 if selected=="RFM":
+    col1,col2=st.columns(2)
+    with col1:
+        st.write("Intro")
+    with col2:
+        st.image("home.jpg")
 
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
     #Thus, only sales dataframe is considered.
