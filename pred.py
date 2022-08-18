@@ -228,20 +228,15 @@ if selected=="ARM":
      </ul>""",unsafe_allow_html=True)
 #Prediction page
 if selected=="Prediction":
-    col1,col2=st.columns([1,2])
+    col1,col2=st.columns(2)
 
-    with col2:
-
+    with col1:
         st.write("Prediction Page")
         st.write("This page focuses on...")
         st.write("This page focuses on...")
-        #"""# Prediction Using Prophet"""
         itemkinds=sales["ItemKind"].unique().tolist()
-        kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
         sales['TransDate'] = pd.to_datetime(sales['TransDate'])
         grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
-        #prediction= sales.groupby('TransDate').Revenue.sum().reset_index()
-        #prediction.columns=["ds","y"]
         grouped_df.columns=["ds","kind","y"]
         prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
         #st.dataframe(prediction)
@@ -249,20 +244,17 @@ if selected=="Prediction":
         model = Prophet()
         # fit the model
         model.fit(prediction)
-
-        # initialize list elements
-        #data = ["2021-11-08","2021-11-09","2021-11-10","2021-11-11","2021-11-12","2021-11-13","2021-11-14","2021-11-15","2021-11-16","2021-11-17","2021-11-18","2021-11-19","2021-11-20","2021-11-21","2021-11-22","2021-11-23"]
         from datetime import datetime
-        forecastime=st.slider("Choose forecast days",5,35,20)
-        data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
         # Create the pandas DataFrame with column name is provided explicitly
         future = pd.DataFrame(data, columns=['ds'])
-
-
         # use the model to make a forecast
         forecast = model.predict(future)
-    st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-
+        
+    st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
+    kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
+    data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
+    forecastime=st.slider("Choose forecast days",5,35,20)
+    
     from prophet.plot import plot_plotly, plot_components_plotly
     fig2=plot_plotly(model, forecast)
     st.plotly_chart(fig2)
