@@ -162,7 +162,7 @@ if selected=="RFM":
     with col3:
         monetary_value=selectedclient["Revenue"]
         st.metric(label="Revenue", value=monetary_value)
-    with col4:
+    #with col4:
         #overall_value=selectedclient["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value)
     with col5:
