@@ -151,14 +151,14 @@ if selected=="RFM":
     
     rfm=pd.read_csv("rfm.csv")
     
-    col1,col2,col3,col4=st.columns(4)
+    col1,col2,col3,col4,col5,col6=st.columns(6)
     
-    with col1:
+    with col2:
         client1=df["Client"].unique().tolist()
         client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         
-    with col3:
+    with col5:
         #Second customer
         client2=df["Client"].unique().tolist()
         client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
