@@ -152,18 +152,22 @@ if selected=="RFM":
     rfm=pd.read_csv("rfm.csv") 
     client1=df["Client"].unique().tolist()
     client2=df["Client"].unique().tolist()
-    selectedclient=rfm[rfm["Client"].isin(client_select)]
-    selectedclient2=rfm[rfm["Client"].isin(client_select2)]
-    segments=selectedclient["Segment"].values[0]
-    segments2=selectedclient2["Segment"].values[0]
+    
+    
+    
+    
     
     col1,col2,col3,col4=st.columns(4)
     with col1:
         client_select=st.multiselect("Choose first customer:",client1,"Tyrone Wright")
+        selectedclient=rfm[rfm["Client"].isin(client_select)]
+        segments=selectedclient["Segment"].values[0]
     with col2:     
         st.write("The client you have selected is",segments)   
     with col3:
         client_select2=st.multiselect("Choose another customer:",client2,"Peter Smith")
+        selectedclient2=rfm[rfm["Client"].isin(client_select2)]
+        segments2=selectedclient2["Segment"].values[0]
     with col4: 
         st.write("The client you have selected is",segments2)
                   
