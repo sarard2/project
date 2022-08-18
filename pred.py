@@ -199,8 +199,7 @@ if selected=="RFM":
 
 
     #Need to calculate revenue for each customer in order to know the monetary score of each customer
-    rev_df = sales.groupby('Client').Revenue.sum()
-    rev_df.reset_index()
+    rev_df = sales.groupby('Client').Revenue.sum().reset_index()
 
     #The revenue dataframe is then merged with the unique clients dataframe through clients.
     rfm_df3= pd.merge(rfm_df2, rev_df, on='Client',how="inner")
@@ -373,8 +372,7 @@ if selected=="Prediction":
         itemkinds=sales["ItemKind"].unique().tolist()
         kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
         sales['TransDate'] = pd.to_datetime(sales['TransDate'])
-        grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum()
-        grouped_df.reset_index()
+        grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
         #prediction= sales.groupby('TransDate').Revenue.sum().reset_index()
         #prediction.columns=["ds","y"]
         grouped_df.columns=["ds","kind","y"]
