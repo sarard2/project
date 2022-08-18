@@ -108,23 +108,16 @@ if selected=="RFM":
          </div>  """,unsafe_allow_html=True)
     with col2:
         st.markdown(""" 
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Frequency</div>
+        <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-         </div>  """,unsafe_allow_html=True)
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
     
-    with col3:
-        st.markdown(""" 
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Monetary</div>
-          <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-         </div>  """,unsafe_allow_html=True)
         
     col1,col2=st.columns(2)
     with col1:
