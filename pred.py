@@ -189,8 +189,6 @@ if selected=="RFM":
 
     col1,col2,col3=st.columns(3)
     with col1:
-        st.write("This section talks about...")
-        st.write("hi..............")
         st.markdown(""" 
         <div class="card text-bg-light mb-3" style="max-width: 18rem;">
           <div class="card-header">Recency</div>
