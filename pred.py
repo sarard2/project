@@ -8,6 +8,7 @@ import plotly
 import plotly.graph_objects as go
 import plotly.express as px
 from prophet import Prophet
+import plotly.io as pio
 
 #Setting page width to wide
 st.set_page_config(layout="wide")
@@ -59,7 +60,7 @@ st.markdown("""
 
 
 #Setting Default Theme for plotly graphs
-#pio.templates.default = "simple_white"
+pio.templates.default = "simple_white"
 
 
 #Sidebar Menu
@@ -260,8 +261,15 @@ if selected=="Prediction":
     col1,col2,col3=st.columns([2,1,2])
     with col2:
         fig2=plot_plotly(model, forecast)
+        fig2.update_layout(xaxis_title="Date",yaxis_title="Revenue")
+        fig2.update_xaxes(showgrid=False,zeroline=False)
+        fig2.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig2)
+        
         fig1=plot_components_plotly(model, forecast)
+        
+        fig1.update_xaxes(showgrid=False,zeroline=False)
+        fig1.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig1)
 
       
