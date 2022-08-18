@@ -239,26 +239,29 @@ if selected=="Prediction":
         st.write("This page focuses on...")
   
     st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-     
-    itemkinds=sales["ItemKind"].unique().tolist()
-    kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
-    grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
-    grouped_df.columns=["ds","kind","y"]
-    prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
-    model = Prophet()
-    model.fit(prediction)
-    forecastime=st.slider("Choose forecast days",5,35,20)
-    data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
+    col1,col2=st.columns(2)
+    with col1:
+        itemkinds=sales["ItemKind"].unique().tolist()
+        kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
+    with col2:
+        grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
+        grouped_df.columns=["ds","kind","y"]
+        prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
+        model = Prophet()
+        model.fit(prediction)
+        forecastime=st.slider("Choose forecast days",5,35,20)
+        data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
+        future = pd.DataFrame(data, columns=['ds'])
+        forecast = model.predict(future)
     
     
-    future = pd.DataFrame(data, columns=['ds'])
-    forecast = model.predict(future)
-    
-    
-    
-    fig2=plot_plotly(model, forecast)
-    st.plotly_chart(fig2)
+    col1,col2=st.columns(2)
+    with col1:
+        fig2=plot_plotly(model, forecast)
+        st.plotly_chart(fig2)
+        
+    with col2:
+        fig1=plot_components_plotly(model, forecast)
+        st.plotly_chart(fig1)
 
-
-    fig1=plot_components_plotly(model, forecast)
-    st.plotly_chart(fig1)
+      
