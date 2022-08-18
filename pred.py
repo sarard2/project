@@ -347,10 +347,10 @@ if selected=="ARM":
           .set_index('InvoiceID'))
     #Need to convert all positive values to 1 and all other to 0 as the quantity is not important over here, what is important is the presence/absence of product in Invoice
     def my_encode_units(x):
-    if x <= 0:
-        return 0
-    if x >= 1:
-        return 1
+        if x <= 0:
+            return 0
+        if x >= 1:
+            return 1
     my_basket_sets = mybasket.applymap(my_encode_units)
     #As apriori doesn't accept any missing values, need to double check through dropping any missing values
     my_basket_sets.dropna(0,inplace=True)
