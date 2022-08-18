@@ -204,14 +204,14 @@ if selected=="RFM":
     col1,col2=st.columns(2)
     
     with col1:
-        figure=px.area(grouped_sales,x="TransDate",y="Revenue")
+        figure=px.line(grouped_sales,x="TransDate",y="Revenue")
         figure.update_layout(xaxis_title="",yaxis_title="Revenue")
         figure.update_xaxes(showgrid=False,zeroline=False)
         figure.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(figure)
     
     with col2:
-        figure1=px.area(grouped_sales2,x="TransDate",y="Revenue")
+        figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
         figure1.update_layout(xaxis_title="",yaxis_title="Revenue")
         figure1.update_xaxes(showgrid=False,zeroline=False)
         figure1.update_yaxes(showgrid=False,showticklabels = True)
