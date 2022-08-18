@@ -201,7 +201,6 @@ if selected=="RFM":
         grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()
         figure=px.line(grouped_sales,x="TransDate",y="Revenue")
         st.plotly_chart(figure)
-    
     with col2:
         figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
         st.plotly_chart(figure1)
