@@ -83,8 +83,6 @@ with col2:
 with col3:
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
 
-#Reading cleaned data
-#df=pd.read_csv(r"C:\Users\Sara\Desktop\Capstone\transactions.csv")
 
 
 #Overview page
@@ -351,7 +349,7 @@ if selected=="ARM":
             return 1
     my_basket_sets = mybasket.applymap(my_encode_units)
     #As apriori doesn't accept any missing values, need to double check through dropping any missing values
-    my_basket_sets.dropna(0,inplace=True)
+    
     #Only transactions that have more than 1 product in them are included in apriori to find more accurate association relationships
     basket_filter=my_basket_sets[(my_basket_sets>0).sum(axis=1)>=2]
     my_frequent_itemsets = apriori(basket_filter, min_support=0.0007, use_colnames=True).sort_values('support',ascending=False).reset_index(drop=True)
