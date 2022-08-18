@@ -338,6 +338,29 @@ if selected=="ARM":
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
     figure=px.bar(filtered,y='ItemName',x="Quantity")
     st.plotly_chart(figure)
+    #Loading needed libraries for this section
+    from mlxtend.frequent_patterns import apriori
+    from mlxtend.frequent_patterns import association_rules
+    #Need to create my basket dataframe which shows products in the following format, it will return 0 if product is not in the Invoice, and a number representing quantity if included
+    mybasket = (saless.groupby(['InvoiceID', 'Item'])['Quantity']
+          .sum().unstack().reset_index().fillna(0)
+          .set_index('InvoiceID'))
+    #Need to convert all positive values to 1 and all other to 0 as the quantity is not important over here, what is important is the presence/absence of product in Invoice
+    def my_encode_units(x):
+    if x <= 0:
+        return 0
+    if x >= 1:
+        return 1
+    my_basket_sets = mybasket.applymap(my_encode_units)
+    #As apriori doesn't accept any missing values, need to double check through dropping any missing values
+    my_basket_sets.dropna(0,inplace=True)
+    #Only transactions that have more than 1 product in them are included in apriori to find more accurate association relationships
+    basket_filter=my_basket_sets[(my_basket_sets>0).sum(axis=1)>=2]
+    my_frequent_itemsets = apriori(basket_filter, min_support=0.0007, use_colnames=True).sort_values('support',ascending=False).reset_index(drop=True)
+    my_frequent_itemsets['length']=my_frequent_itemsets['itemsets'].apply(lambda x: len(x))
+    assoc_rules = association_rules(my_frequent_itemsets, metric="lift", min_threshold=1).sort_values("lift",ascending=False).reset_index(drop=True)
+    rules=assoc_rules[["antecedents","consequents","support","confidence","lift"]]
+    assoc_rules[ (assoc_rules['lift'] >= 6) & (assoc_rules['confidence'] >= 0.8) ]
 
 #Prediction page
 if selected=="Prediction":
