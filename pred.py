@@ -275,24 +275,7 @@ if selected=="RFM":
 
 
 #ARM page
-if selected=="ARM":
-    col1,col2=st.columns(2)
-    with col1:
-        st.write("ARM Page")
-        st.write("This page focuses on...")
-        st.write("this page is...")
-        invoices=df["InvoiceID"].unique().tolist()
-        invoice_select=st.multiselect("Which invoice are you interested in reviewing?",invoices,100777442)
-        filtered=df[df["InvoiceID"].isin(invoice_select)]
-        #type=filtered[filtered["InvoiceType"]].value()
-        #st.write(type)
-
-
-    st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-    figure=px.bar(filtered,y='ItemName',x="Quantity")
-    st.plotly_chart(figure)
-    
-    
+if selected=="ARM": 
     #Loading needed libraries for this section
     from mlxtend.frequent_patterns import apriori
     from mlxtend.frequent_patterns import association_rules
@@ -314,7 +297,8 @@ if selected=="ARM":
     assoc_rules = association_rules(my_frequent_itemsets, metric="lift", min_threshold=1).sort_values("lift",ascending=False).reset_index(drop=True)
     rules=assoc_rules[["antecedents","consequents","support","confidence","lift"]]
     assoc_rules[ (assoc_rules['lift'] >= 6) & (assoc_rules['confidence'] >= 0.8) ]
-    st.dataframe(rules)
+    
+    st.dataframe(my_frequent_itemsets)
 
 #Prediction page
 if selected=="Prediction":
