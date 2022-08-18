@@ -148,49 +148,52 @@ if selected=="RFM":
     </div>
     """,unsafe_allow_html=True)
     
-    col1,col2=st.columns(2)
+    
+    rfm=pd.read_csv("rfm.csv")
+    
+    col1,col2,col3,col4=st.columns(4)
+    
     with col1:
-        rfm=pd.read_csv("rfm.csv")
-        #st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-        #st.dataframe(selectedclient)
         client1=df["Client"].unique().tolist()
         client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
         selectedclient=rfm[rfm["Client"].isin(client_select)]
-        segments=selectedclient["Segment"].values[0]
-        st.write("The client you have selected is",segments)
-
-        recency_value=selectedclient["Recency"]
-        st.metric(label="Recency", value=recency_value)
-
-        freq_value=selectedclient["Frequency"]
-        st.metric(label="Frequency", value=freq_value)
-
-        monetary_value=selectedclient["Revenue"]
-        st.metric(label="Revenue", value=monetary_value)
-
-        overall_value=selectedclient["OverallScore"]
-        st.metric(label="Overall Score", value=overall_value)
-    with col2:
+        
+    with col3:
         #Second customer
         client2=df["Client"].unique().tolist()
         client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
         selectedclient2=rfm[rfm["Client"].isin(client_select2)]
-        segments2=selectedclient2["Segment"].values[0]
-        st.write("The client you have selected is",segments2)
-
+        
+    col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
+    with col1:
+        recency_value=selectedclient["Recency"]
+        st.metric(label="Recency", value=recency_value)
+    with col2:
+        freq_value=selectedclient["Frequency"]
+        st.metric(label="Frequency", value=freq_value)
+    with col3:
+        monetary_value=selectedclient["Revenue"]
+        st.metric(label="Revenue", value=monetary_value)
+    with col4:
+        overall_value=selectedclient["OverallScore"]
+        st.metric(label="Overall Score", value=overall_value)
+    with col5:
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
-
+    with col6:
         freq_value2=selectedclient2["Frequency"]
         st.metric(label="Frequency", value=freq_value2)
-
+    with col7:
         monetary_value2=selectedclient2["Revenue"]
         st.metric(label="Revenue", value=monetary_value2)
-
+    with col8:
         overall_value2=selectedclient2["OverallScore"]
         st.metric(label="Overall Score", value=overall_value2)
-
-
+        
+        segments=selectedclient["Segment"].values[0]
+        st.write("The client you have selected is",segments)
+        segments2=selectedclient2["Segment"].values[0]
+        st.write("The client you have selected is",segments2)
     clientsales=sales[sales["Client"].isin(client_select)]
     clientsales2=sales[sales["Client"].isin(client_select2)]
     grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
