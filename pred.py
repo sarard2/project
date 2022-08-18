@@ -193,14 +193,15 @@ if selected=="RFM":
         #overall_value2=selectedclient2["OverallScore"]
         #st.metric(label="Overall Score", value=overall_value2)  
     
+    clientsales=sales[sales["Client"].isin(client_select)]
+    clientsales2=sales[sales["Client"].isin(client_select2)]
+    grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
+    grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()    
     col1,col2=st.columns(2)
     with col1:
-        clientsales=sales[sales["Client"].isin(client_select)]
-        clientsales2=sales[sales["Client"].isin(client_select2)]
-        grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
-        grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()
         figure=px.line(grouped_sales,x="TransDate",y="Revenue")
         st.plotly_chart(figure)
+    
     with col2:
         figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
         st.plotly_chart(figure1)
