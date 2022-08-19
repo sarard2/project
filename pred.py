@@ -92,7 +92,7 @@ if selected=="Overview":
 if selected=="RFM":
     col1,col2=st.columns(2)
     with col1:
-        st.write("Intro")
+        st.write("RFM analysis is a marketing technique used to quantitatively rank and group customers based on the recency, frequency and monetary total of their recent transactions to identify the best customers and perform targeted marketing campaigns. The system assigns each customer numerical scores based on these factors to provide an objective analysis.")
     with col2:
         st.image("home.jpg")
 
