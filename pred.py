@@ -218,12 +218,21 @@ if selected=="RFM":
         st.plotly_chart(figure1)
         
 #ARM page
-if selected=="ARM": 
-   rules=pd.read_csv("rules.csv")
-   AgGrid(rules)
+if selected=="ARM":
+    rules=pd.read_csv("rules.csv")
+    col1,col2=st.columns(2)
+    with col1:
+        st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. To put it another way, it allows retailers to identify relationships between the items that people buy.")
+    with col2:
+        st.image("home.jpg")
+   
    ant=rules["Antecedents"].values[0]
    con=rules["Consequents"].values[0]
    st.write("People who usually buy",ant,"also buy",con)
+
+   with st.expander("Have a look at the dataset format!"):  
+        AgGrid(rules)
+   
     
    st.markdown("""
    <ul class="list-group list-group-flush">
