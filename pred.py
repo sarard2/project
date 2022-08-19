@@ -221,9 +221,9 @@ if selected=="RFM":
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
    AgGrid(rules)
-   rules1=rules.head(1)
+   rules1=rules.head(5)
    ant=rules["Antecedents"].values[0]
-   st.write(ant)
+   st.write(rules1["Antecedents])
     
    st.markdown("""
    <ul class="list-group list-group-flush">
