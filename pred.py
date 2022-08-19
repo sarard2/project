@@ -221,6 +221,9 @@ if selected=="RFM":
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
    AgGrid(rules)
+   ant=rules["antecedents"].values[0]
+   st.write("ant")
+    
    st.markdown("""
    <ul class="list-group list-group-flush">
      <li class="list-group-item">An item</li>
@@ -229,6 +232,8 @@ if selected=="ARM":
      <li class="list-group-item">A fourth item</li>
      <li class="list-group-item">And a fifth one</li>
      </ul>""",unsafe_allow_html=True)
+
+
 #Prediction page
 if selected=="Prediction":
     
