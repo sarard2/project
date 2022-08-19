@@ -1,16 +1,14 @@
 import pandas as pd
 import streamlit as st
-
+import matplotlib as plt
 import numpy
 from streamlit_option_menu import option_menu
-#from st_aggrid import AgGrid
+from st_aggrid import AgGrid
 import plotly
 import plotly.graph_objects as go
 import plotly.express as px
-import plotly.io as pio
-import matplotlib as plt
 from prophet import Prophet
-from sklearn.metrics import mean_absolute_error
+import plotly.io as pio
 
 #Setting page width to wide
 st.set_page_config(layout="wide")
@@ -18,6 +16,7 @@ st.set_page_config(layout="wide")
 #Loading Data
 df=pd.read_csv(r"transactions.csv")
 sales=df[df["InvoiceType"]=="Sales"]
+sales['TransDate'] = pd.to_datetime(sales['TransDate'])
 purhases=df[df["InvoiceType"]=="Purchase"]
 returnsales=df[df["InvoiceType"]=="Return Sales"]
 
@@ -36,10 +35,7 @@ st.markdown("""
 </style>
 """,unsafe_allow_html=True)
 
-#st.markdown("""
-#<div class="alert alert-secondary" role="alert">
-#</div>
-#""",unsafe_allow_html=True)
+
 
 #This is to show the upper banner with links
 st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
@@ -61,6 +57,7 @@ st.markdown("""
   </div>
 </nav>
 """, unsafe_allow_html=True)
+
 
 #Setting Default Theme for plotly graphs
 pio.templates.default = "simple_white"
@@ -86,239 +83,198 @@ with col3:
 
 #Overview page
 if selected=="Overview":
-    
-    #df_sample=df.sample(frac=0.2)
-    #st.dataframe(df)
-    #AgGrid(df_sample)
-    col1,col2=st.columns(2)
-    with col1:
-        st.write("Project Overview")
     with st.expander("Have a look at the dataset format!"):
-         st.dataframe(df)
-
-
+        df_sample=df.sample(frac=0.25)
+        AgGrid(df_sample)
 
 
 #RFM page
 if selected=="RFM":
+    col1,col2=st.columns(2)
+    with col1:
+        st.write("RFM analysis is a marketing technique used to quantitatively rank and group customers based on the recency, frequency and monetary total of their recent transactions to identify the best customers and perform targeted marketing campaigns. The system assigns each customer numerical scores based on these factors to provide an objective analysis.")
+    with col2:
+        st.image("home.jpg")
 
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
     #Thus, only sales dataframe is considered.
-
-    #A new dataframe which highlight the unique clients is created
-    rfm_df = pd.DataFrame(sales['Client'].unique())
-    rfm_df.columns = ['Client']
-    #Need to find out most recent purchase date of each customer and see how many days they are inactive for (When did they last have a transaction?)
-    date_df = sales.groupby('Client').TransDate.max().reset_index()
-    date_df.columns = ['Client','MaxDate']
-    date_df['MaxDate'] = pd.to_datetime(date_df['MaxDate'])
-
-    #The observation point is the max invoice date in the dataset in order to correspond to most recent date
-    date_df['Recency'] = (date_df['MaxDate'].max() - date_df['MaxDate']).dt.days
-
-    #The date dataframe is then merged with the unique clients dataframe through clients.
-    rfm_df1 = pd.merge(rfm_df,date_df[["Client","Recency"]],on='Client',how="inner")
-
-
-    #The frequency per customer depends on the number of times the customer purchased from us
-    freq_df = sales.groupby('Client').TransDate.count().reset_index()
-    freq_df.columns = ['Client','Frequency']
-
-    #The frequency dataframe is then merged with the unique clients dataframe through clients.
-    rfm_df2= pd.merge(rfm_df1, freq_df, on='Client',how="inner")
-
-
-    #Need to calculate revenue for each customer in order to know the monetary score of each customer
-    rev_df = sales.groupby('Client').Revenue.sum().reset_index()
-
-    #The revenue dataframe is then merged with the unique clients dataframe through clients.
-    rfm_df3= pd.merge(rfm_df2, rev_df, on='Client',how="inner")
-
-    #As the three previous merges caused reoccuring columns, only columns of importance are selected to create the final rfm dataframe which shows each client with corresponding scores
-    rfm=rfm_df3[["Client","Recency","Frequency","Revenue"]]
-
-    #As each client now has score based on recency, frequency and monetary, Clients are grouped based on similarities in these scores
-
-    #Importing needed libary for this sections
-    from sklearn.cluster import KMeans
-
-    #K means for recency to find similar clients in this aspect
-    sse={}
-    recency = rfm[['Recency']]
-
-    #As line chart above becomes stable on k=3, should build 3 clusters for recency and add it to dataframe
-    kmeans = KMeans(n_clusters=3)
-    kmeans.fit(rfm[['Recency']])
-    rfm['RecencyCluster'] = kmeans.predict(rfm[['Recency']])
-
-    #The following function is used to order the cluster numbers
-    def ordering(cluster_field_name, target_field_name,df,ascending):
-        new_cluster_field_name = 'new_' + cluster_field_name
-        df_new = df.groupby(cluster_field_name)[target_field_name].mean().reset_index()
-        df_new = df_new.sort_values(by=target_field_name,ascending=ascending).reset_index(drop=True)
-        df_new['index'] = df_new.index
-        df_final = pd.merge(df,df_new[[cluster_field_name,'index']], on=cluster_field_name)
-        df_final = df_final.drop([cluster_field_name],axis=1)
-        df_final = df_final.rename(columns={"index":cluster_field_name})
-        return df_final
-    rfm = ordering('RecencyCluster','Recency',rfm,False)
-
-    #Doing Kmeans for Frequency
-    kmeans = KMeans(n_clusters=3)
-    kmeans.fit(rfm[['Frequency']])
-    rfm['FrequencyCluster'] = kmeans.predict(rfm[['Frequency']])
-
-    #Need to order the frequency cluster numbers
-    rfm = ordering('FrequencyCluster', 'Frequency',rfm,True)
-
-    #Doing Kmeans for Revenue
-    kmeans = KMeans(n_clusters=3)
-    kmeans.fit(rfm[['Revenue']])
-    rfm['RevenueCluster'] = kmeans.predict(rfm[['Revenue']])
-    #Need to order the revenue cluster numbers
-    rfm = ordering('RevenueCluster', 'Revenue',rfm,True)
-    #Need to calculate overall RFM score and see the mean to know the details
-    rfm['OverallScore'] = rfm['RecencyCluster'] + rfm['FrequencyCluster'] + rfm['RevenueCluster']
-    rfm.groupby('OverallScore')['Recency','Frequency','Revenue'].mean()
-
-    #According to the RFM score, each customer is placed in a certain category and should be treated accordingly
-    rfm['Segment'] = 'Low-Value'
-    rfm.loc[rfm['OverallScore']>2,'Segment'] = 'Mid-Value'
-    rfm.loc[rfm['OverallScore']>4,'Segment'] = 'High-Value'
-
-
-    col1,col2,col3=st.columns(3)
+    
+    col1,col2,col3,col4=st.columns(4)
     with col1:
         st.markdown(""" 
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Recency</div>
+        <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-         </div>  """,unsafe_allow_html=True)
+          <h5 class="card-title">Recency</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How recent was the customer's last purchase?</h6>
+          <p class="card-text">Customers who recently made a purchase will still have the product on their mind and are more likely to purchase or use the product again. Businesses often measure recency in days.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
     with col2:
         st.markdown(""" 
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Frequency</div>
+        <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-         </div>  """,unsafe_allow_html=True)
-    
+          <h5 class="card-title">Frequency</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How often did this customer make a purchase in a given period?</h6>
+          <p class="card-text">Customers who purchased once are often are more likely to purchase again. Additionally, first time customers may be good targets for follow-up advertising to convert them into more frequent customers.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
     with col3:
         st.markdown(""" 
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">Monetary</div>
+        <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-         </div>  """,unsafe_allow_html=True)
-        
-    col1,col2=st.columns(2)
+          <h5 class="card-title">Monetary</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How much money did the customer spend in a given period?</h6>
+          <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
+    with col4:
+        st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Customer Segment</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are segmented into groups. </p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+         </div>
+        </div>  """,unsafe_allow_html=True)
+    
+    st.write("")
+    st.markdown("""
+    <div class="alert alert-secondary" role="alert">
+    </div>
+    """,unsafe_allow_html=True)
+    
+    rfm=pd.read_csv("rfm.csv") 
+    client1=df["Client"].unique().tolist()
+    client2=df["Client"].unique().tolist()
+    
+    col1,col2,col3,col4=st.columns(4)
     with col1:
-        #st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-        #st.dataframe(selectedclient)
-        client1=df["Client"].unique().tolist()
-        client_select=st.multiselect("Which customer are you interested in reviewing?",client1,"Tyrone Wright")
+        client_select=st.multiselect("Choose first customer:",client1,"Tyrone Wright")
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
-        st.write("The client you have selected is",segments)
-
-        recency_value=selectedclient["Recency"]
-        st.metric(label="Recency", value=recency_value)
-
-        freq_value=selectedclient["Frequency"]
-        st.metric(label="Frequency", value=freq_value)
-
-        monetary_value=selectedclient["Revenue"]
-        st.metric(label="Revenue", value=monetary_value)
-
-        overall_value=selectedclient["OverallScore"]
-        st.metric(label="Overall Score", value=overall_value)
-    with col2:
-        #Second customer
-        client2=df["Client"].unique().tolist()
-        client_select2=st.multiselect("Which customer are ?",client2,"Peter Smith")
+    #with col2:     
+        #st.write("The client you have selected is",segments)   
+    with col3:
+        client_select2=st.multiselect("Choose another customer:",client2,"Peter Smith")
         selectedclient2=rfm[rfm["Client"].isin(client_select2)]
         segments2=selectedclient2["Segment"].values[0]
-        st.write("The client you have selected is",segments2)
-
+    #with col4: 
+        #st.write("The client you have selected is",segments2)
+                  
+    col1,col2,col3,col4,col5,col6,col7,col8=st.columns(8)  
+    with col1:
+        recency_value=selectedclient["Recency"]
+        st.metric(label="Recency", value=recency_value)
+    with col2:
+        freq_value=selectedclient["Frequency"]
+        st.metric(label="Frequency", value=freq_value)
+    with col3:
+        monetary_value=selectedclient["Revenue"]
+        st.metric(label="Revenue", value=monetary_value)
+    #with col4:
+        #overall_value=selectedclient["OverallScore"]
+        #st.metric(label="Overall Score", value=overall_value)
+    with col5: 
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
-
+    with col6:
         freq_value2=selectedclient2["Frequency"]
         st.metric(label="Frequency", value=freq_value2)
-
+    with col7:
         monetary_value2=selectedclient2["Revenue"]
         st.metric(label="Revenue", value=monetary_value2)
-
-        overall_value2=selectedclient2["OverallScore"]
-        st.metric(label="Overall Score", value=overall_value2)
-
-
+    #with col8:
+        #overall_value2=selectedclient2["OverallScore"]
+        #st.metric(label="Overall Score", value=overall_value2)  
+        
+        
     clientsales=sales[sales["Client"].isin(client_select)]
     clientsales2=sales[sales["Client"].isin(client_select2)]
     grouped_sales= clientsales.groupby('TransDate').Revenue.sum().reset_index()
-    grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()
-    figure=px.line(grouped_sales,x="TransDate",y="Revenue")
-    #figure.add_scatter(x=grouped_sales2["TransDate"],y=grouped_sales2["Revenue"])
-    st.plotly_chart(figure)
-    figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
-    #figure.add_scatter(x=grouped_sales2["TransDate"],y=grouped_sales2["Revenue"])
-    st.plotly_chart(figure1)
-
-
-
-
-
+    grouped_sales2= clientsales2.groupby('TransDate').Revenue.sum().reset_index()  
+    
+    col1,col2=st.columns(2)
+    
+    with col1:
+        figure=px.line(grouped_sales,x="TransDate",y="Revenue")
+        figure.update_layout(xaxis_title="",yaxis_title="Revenue")
+        figure.update_xaxes(showgrid=False,zeroline=False)
+        figure.update_yaxes(showgrid=False,showticklabels = True)
+        st.plotly_chart(figure)
+    
+    with col2:
+        figure1=px.line(grouped_sales2,x="TransDate",y="Revenue")
+        figure1.update_layout(xaxis_title="",yaxis_title="Revenue")
+        figure1.update_xaxes(showgrid=False,zeroline=False)
+        figure1.update_yaxes(showgrid=False,showticklabels = True)
+        st.plotly_chart(figure1)
+        
 #ARM page
 if selected=="ARM": 
    rules=pd.read_csv("rules.csv")
-   st.write(rules)
+   AgGrid(rules)
+   ant=rules["antecedents"].values[0]
+   st.write(ant)
+    
+   st.markdown("""
+   <ul class="list-group list-group-flush">
+     <li class="list-group-item">An item</li>
+     <li class="list-group-item">A second item</li>
+     <li class="list-group-item">A third item</li>
+     <li class="list-group-item">A fourth item</li>
+     <li class="list-group-item">And a fifth one</li>
+     </ul>""",unsafe_allow_html=True)
+
+
 #Prediction page
 if selected=="Prediction":
-    col1,col2=st.columns([1,2])
-
-    with col2:
-
+    
+    from datetime import datetime
+    from prophet.plot import plot_plotly, plot_components_plotly
+    col1,col2=st.columns(2)
+    with col1:
         st.write("Prediction Page")
         st.write("This page focuses on...")
         st.write("This page focuses on...")
-        #"""# Prediction Using Prophet"""
+  
+    st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
+    col1,col2=st.columns(2)
+    with col1:
         itemkinds=sales["ItemKind"].unique().tolist()
         kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
-        sales['TransDate'] = pd.to_datetime(sales['TransDate'])
+    with col2:
         grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
-        #prediction= sales.groupby('TransDate').Revenue.sum().reset_index()
-        #prediction.columns=["ds","y"]
         grouped_df.columns=["ds","kind","y"]
         prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
-        #st.dataframe(prediction)
-        # define the model
         model = Prophet()
-        # fit the model
         model.fit(prediction)
-
-        # initialize list elements
-        #data = ["2021-11-08","2021-11-09","2021-11-10","2021-11-11","2021-11-12","2021-11-13","2021-11-14","2021-11-15","2021-11-16","2021-11-17","2021-11-18","2021-11-19","2021-11-20","2021-11-21","2021-11-22","2021-11-23"]
-        from datetime import datetime
         forecastime=st.slider("Choose forecast days",5,35,20)
         data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
-        # Create the pandas DataFrame with column name is provided explicitly
         future = pd.DataFrame(data, columns=['ds'])
-
-
-        # use the model to make a forecast
         forecast = model.predict(future)
-    st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-
-    from prophet.plot import plot_plotly, plot_components_plotly
-    fig2=plot_plotly(model, forecast)
-    st.plotly_chart(fig2)
-
-
-    fig1=plot_components_plotly(model, forecast)
-    st.plotly_chart(fig1)
+        forecast['ds'] = pd.to_datetime(forecast['ds'])
+        st.dataframe(forecast[["ds","yhat"]])
+    
+    
+    col1,col2,col3=st.columns([2,1,2])
+    with col2:
+        fig2=plot_plotly(model, forecast)
+        fig2.update_layout(xaxis_title="",yaxis_title="Revenue")
+        fig2.update_xaxes(showgrid=False,zeroline=False)
+        fig2.update_yaxes(showgrid=False,showticklabels = True)
+        st.plotly_chart(fig2)
+        
+        fig1=plot_components_plotly(model, forecast)
+        
+        fig1.update_xaxes(showgrid=False,zeroline=False)
+        fig1.update_yaxes(showgrid=False,showticklabels = True)
+        st.plotly_chart(fig1)
+  
