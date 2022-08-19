@@ -228,6 +228,15 @@ if selected=="ARM":
     ant=rules["Antecedents"].values[0]
     con=rules["Consequents"].values[0]
     st.write("People who usually buy",ant,"also buy",con)
+    ant1=rules["Antecedents"].values[1]
+    con1=rules["Consequents"].values[1]
+    st.write("People who usually buy",ant1,"also buy",con1)
+    ant2=rules["Antecedents"].values[2]
+    con2=rules["Consequents"].values[2]
+    st.write("People who usually buy",ant2,"also buy",con2)
+    ant3=rules["Antecedents"].values[3]
+    con3=rules["Consequents"].values[3]
+    st.write("People who usually buy",ant3,"also buy",con3)
     with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
     
