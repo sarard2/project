@@ -272,9 +272,4 @@ if selected=="Prediction":
         fig1.update_xaxes(showgrid=False,zeroline=False)
         fig1.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig1)
-
-    st.markdown("""
-    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
-      <button class="btn btn-primary" type="button" disabled>Disabled button</button> 
-    </span>""",unsafe_allow_html=True)
   
