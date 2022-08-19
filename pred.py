@@ -116,8 +116,8 @@ if selected=="RFM":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Recency</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Customer Visits</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h6 class="card-subtitle mb-2 text-muted">How often did this customer make a purchase in a given period?</h6>
+          <p class="card-text">Customers who purchased once are often are more likely to purchase again. Additionally, first time customers may be good targets for follow-up advertising to convert them into more frequent customers.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
@@ -127,8 +127,8 @@ if selected=="RFM":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Recency</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Customer Visits</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h6 class="card-subtitle mb-2 text-muted">How much money did the customer spend in a given period?</h6>
+          <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
