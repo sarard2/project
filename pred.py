@@ -105,8 +105,8 @@ if selected=="RFM":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Recency</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Customer Visits</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h6 class="card-subtitle mb-2 text-muted">How recent was the customer's last purchase?</h6>
+          <p class="card-text">Customers who recently made a purchase will still have the product on their mind and are more likely to purchase or use the product again. Businesses often measure recency in days. But, depending on the product, they may measure it in years, weeks or even hours.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
