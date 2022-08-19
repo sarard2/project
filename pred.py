@@ -268,19 +268,17 @@ if selected=="Prediction":
         future = pd.DataFrame(data, columns=['ds'])
         forecast = model.predict(future)
         forecast['ds'] = pd.to_datetime(forecast['ds'])
-        st.dataframe(forecast[["ds","yhat"]])
     
-    
-    col1,col2,col3=st.columns([2,1,2])
-    with col2:
+    col1,col2=st.columns([2,1])
+    with col1:
         fig2=plot_plotly(model, forecast)
         fig2.update_layout(xaxis_title="",yaxis_title="Revenue")
         fig2.update_xaxes(showgrid=False,zeroline=False)
         fig2.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig2)
-        
+    with col2:
+        st.dataframe(forecast[["ds","yhat"]])
         fig1=plot_components_plotly(model, forecast)
-        
         fig1.update_xaxes(showgrid=False,zeroline=False)
         fig1.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig1)
