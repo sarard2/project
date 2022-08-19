@@ -223,7 +223,7 @@ if selected=="ARM":
    AgGrid(rules)
    rules1=rules.head(5)
    ant=rules["Antecedents"].values[0]
-   st.write(rules1["Antecedents])
+   st.write(rules1["Antecedents"])
     
    st.markdown("""
    <ul class="list-group list-group-flush">
