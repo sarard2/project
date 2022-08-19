@@ -225,14 +225,11 @@ if selected=="ARM":
         st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. To put it another way, it allows retailers to identify relationships between the items that people buy.")
     with col2:
         st.image("home.jpg")
-   
-   ant=rules["Antecedents"].values[0]
-   con=rules["Consequents"].values[0]
-   st.write("People who usually buy",ant,"also buy",con)
-
-   with st.expander("Have a look at the dataset format!"):  
+    ant=rules["Antecedents"].values[0]
+    con=rules["Consequents"].values[0]
+    st.write("People who usually buy",ant,"also buy",con)
+    with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
-   
     
    st.markdown("""
    <ul class="list-group list-group-flush">
