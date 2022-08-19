@@ -273,5 +273,5 @@ if selected=="Prediction":
         fig1.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig1)
 
-    st.markdown("""<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>""",unsafe_allow_html=True)
+    st.markdown("""<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>""",unsafe_allow_html=False)
   
