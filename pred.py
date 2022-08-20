@@ -252,9 +252,9 @@ if selected=="Transactions":
      st.markdown(""" 
        <div class="card" style="width: 18rem;">
          <div class="card-body">
-         <h5 class="card-title">Customer Segment</h5>
-         <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-         <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+         <h5 class="card-title">Support</h5>
+         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the itemset occurs. </h6>
+         <p class="card-text">The support represents the probability that two items/itemsets appearing together in the dataset. </p>
         
         </div>
        </div>  """,unsafe_allow_html=True)
@@ -262,9 +262,9 @@ if selected=="Transactions":
       st.markdown(""" 
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-          <h5 class="card-title">Customer Segment</h5>
-          <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+          <h5 class="card-title">Confidence</h5>
+          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greater the likelihood that the other item will be purchased. </h6>
+          <p class="card-text">The confidence represents the probability that a transaction which contains the antecedent itemset also contains the consequent item. </p>
         
          </div>
         </div>  """,unsafe_allow_html=True)
@@ -272,9 +272,9 @@ if selected=="Transactions":
       st.markdown(""" 
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-          <h5 class="card-title">Customer Segment</h5>
-          <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+          <h5 class="card-title">Lift</h5>
+          <h6 class="card-subtitle mb-2 text-muted">The larger the lift the greater the link between the two products.</h6>
+          <p class="card-text">The lift represents the increase in expectation that a customer will buy the consequent item, given that he has bought the antecedent itemset. </p>
         
          </div>
         </div>  """,unsafe_allow_html=True)
