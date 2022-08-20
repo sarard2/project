@@ -91,7 +91,7 @@ def set_bg_hack_url():
         }}
         </style>
         """,unsafe_allow_html=True)
-    
+set_bg_hack_url()
     
 
 #Overview page
