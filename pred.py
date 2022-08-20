@@ -259,7 +259,7 @@ if selected=="Prediction":
     
     from datetime import datetime
     from prophet.plot import plot_plotly, plot_components_plotly
-    col1,col2=st.columns(2)
+    col1,col2,col3,col4=st.columns(4)
     with col1:
         st.write("Prediction Page")
         st.write("This page focuses on...")
