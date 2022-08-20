@@ -85,7 +85,7 @@ if selected=="Overview":
  with col2:
   st.image("dashboard.jpeg")
   
- with st.expander("View the dataset format"):
+ with st.expander("View the Dataset"):
   df_sample=df.sample(frac=0.25)
   AgGrid(df_sample)
 
