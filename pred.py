@@ -75,16 +75,19 @@ with col2:
         "nav-link-selected": {"background-color": "#1F628E"},
     })
 with col3:
-    st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-
-
-    
+    st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True) 
 
 #Overview page
 if selected=="Overview":
-    with st.expander("Have a look at the dataset format!"):
-        df_sample=df.sample(frac=0.25)
-        AgGrid(df_sample)
+ col1,col2=st.columns([2,1])
+ with col1:
+  st.write("Intro")
+ with col2:
+  st.image("dashboard.jpeg")
+  
+ with st.expander("View the dataset format"):
+  df_sample=df.sample(frac=0.25)
+  AgGrid(df_sample)
 
 
 #RFM page
