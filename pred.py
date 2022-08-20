@@ -294,6 +294,8 @@ if selected=="Sales Prediction":
         fig2.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig2)
     with col2:
+     st.write("The blue line represents the sales forecast to the future")
+     st.write("The blue area represents the sales prediction with upper and lowers limits")
      values=forecast[["ds","yhat"]]
      values.columns=["Date","Expected Revenue"]
      with st.expander("Have a look at the predicted revenue values!"):
