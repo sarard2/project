@@ -229,7 +229,6 @@ if selected=="Transactions":
     col1,col2=st.columns(2)
     with col1:
      st.markdown("""<h3>Market Basket Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
-     
      st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. It allows retailers to identify relationships between the items that people buy.")
      st.write("The growing application of market basket analysis would allow retailers to better anticipate the purchasing habits of customers and to forecast the likelihood of products being purchased together.")
     with col2:
@@ -241,10 +240,40 @@ if selected=="Transactions":
     figure3.update_xaxes(showgrid=False,zeroline=False)
     figure3.update_yaxes(showgrid=False,showticklabels = True)
     st.plotly_chart(figure3)
-    
    
     with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
+    col1,col2,col3=st.columns(3)
+    with col1:
+     st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Customer Segment</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+        
+         </div>
+        </div>  """,unsafe_allow_html=True)
+     with col2:
+     st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Customer Segment</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+        
+         </div>
+        </div>  """,unsafe_allow_html=True)
+     with col3:
+     st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Customer Segment</h5>
+          <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+        
+         </div>
+        </div>  """,unsafe_allow_html=True)
     
     st.markdown("""
     <ul class="list-group list-group-flush">
