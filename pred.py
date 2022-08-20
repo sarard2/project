@@ -293,7 +293,7 @@ if selected=="Prediction":
     with col2:
      values=forecast[["ds","yhat"]]
      values.columns=["Date","Expected Revenue"]
-     with st.expander("Check out the predicted revenue values!):
+     with st.expander("Have a look at the predicted revenue values!):
       AgGrid(values)
     
     col1,col2=st.columns([2,1])
