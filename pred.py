@@ -91,11 +91,12 @@ def set_bg_hack_url():
         }}
         </style>
         """,unsafe_allow_html=True)
-set_bg_hack_url()
+
     
 
 #Overview page
 if selected=="Overview":
+    set_bg_hack_url()
     with st.expander("Have a look at the dataset format!"):
         df_sample=df.sample(frac=0.25)
         AgGrid(df_sample)
