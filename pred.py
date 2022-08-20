@@ -223,7 +223,7 @@ if selected=="Customers":
         
 
 #ARM page
-if selected=="Products": 
+if selected=="Transactions": 
     #Model of rules From Pickle File
     rules=pickle.load(open("arm.pkl",'rb'))
     
