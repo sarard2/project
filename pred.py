@@ -259,7 +259,7 @@ if selected=="Prediction":
     
     from datetime import datetime
     from prophet.plot import plot_plotly, plot_components_plotly
-    col1,col2,col3,col4=st.columns(4)
+    col1,col2=st.columns(2)
     with col1:
         st.write("Prediction Page")
         st.write("This page focuses on...")
@@ -267,7 +267,7 @@ if selected=="Prediction":
     with col2:
      st.image("forecast.jpeg")
     st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
-    col1,col2=st.columns(2)
+    col1,col2,col3,col4=st.columns(4)
     with col1:
         itemkinds=sales["ItemKind"].unique().tolist()
         kind_select=st.multiselect("Choose an Item Family",itemkinds,"Shoes")
