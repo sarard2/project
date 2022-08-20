@@ -9,6 +9,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from prophet import Prophet
 import plotly.io as pio
+import pickle
 
 #Setting page width to wide
 st.set_page_config(layout="wide")
