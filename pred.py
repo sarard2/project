@@ -15,7 +15,9 @@ import pickle
 st.set_page_config(layout="wide")
 
 #Loading Data
-df=pd.read_csv(r"transactions.csv")
+data_file = st.file_uploader("Upload CSV",type=["csv"])
+df = pd.read_csv(data_file)
+#df=pd.read_csv(r"transactions.csv")
 sales=df[df["InvoiceType"]=="Sales"]
 sales['TransDate'] = pd.to_datetime(sales['TransDate'])
 purhases=df[df["InvoiceType"]=="Purchase"]
