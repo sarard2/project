@@ -144,7 +144,7 @@ if selected=="Customers":
           <div class="card-body">
           <h5 class="card-title">Customer Segment</h5>
           <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently according to the overall score.</p>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently according to the overall score.                    </p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
