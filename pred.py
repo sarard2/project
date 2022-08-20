@@ -96,8 +96,9 @@ if selected=="Overview":
 if selected=="Customers":
     col1,col2=st.columns(2)
     with col1:
-        st.write("RFM analysis is a marketing technique used to quantitatively rank and group customers based on the recency, frequency and monetary total of their recent transactions to identify the best customers and perform targeted marketing campaigns. The system assigns each customer numerical scores based on these factors to provide an objective analysis.")
-    with col2:
+        st.markdown("""<h3>Customer RFM Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
+        st.write("The latter is a marketing approach that is used to statistically evaluate and classify clients based on the frequency, total dollar amount, and recency of their most recent transactions.")
+        st.write("It aims at pinpointing the best customers and consequently executing focused marketing campaigns.")
         st.image("client.jpeg")
 
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
@@ -120,7 +121,7 @@ if selected=="Customers":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Frequency</h5>
-          <h6 class="card-subtitle mb-2 text-muted">How often did this customer make a purchase in a given period?</h6>
+          <h6 class="card-subtitle mb-2 text-muted">How often did this customer make a purchase?</h6>
           <p class="card-text">Customers who purchased once are often are more likely to purchase again. Additionally, first time customers may be good targets for follow-up advertising to convert them into more frequent customers.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
@@ -131,8 +132,8 @@ if selected=="Customers":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Monetary</h5>
-          <h6 class="card-subtitle mb-2 text-muted">How much money did the customer spend in a given period?</h6>
-          <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business.</p>
+          <h6 class="card-subtitle mb-2 text-muted">How much money did the customer spend?</h6>
+          <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business. The total revenue is calculated during a given period.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
@@ -143,7 +144,7 @@ if selected=="Customers":
           <div class="card-body">
           <h5 class="card-title">Customer Segment</h5>
           <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-          <p class="card-text">According to the recency, frequency and monetary value, customers are segmented into groups. </p>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are segmented into groups. Each group will have different target marketing. </p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
