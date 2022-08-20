@@ -233,14 +233,17 @@ if selected=="Transactions":
      st.write("The growing application of market basket analysis would allow retailers to better anticipate the purchasing habits of customers and to forecast the likelihood of products being purchased together.")
     with col2:
         st.image("money.png")
-    unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
-    unique2=unique[unique["Quantity"]<30]
-    figure3=px.histogram(unique2,x="Quantity")
-    figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="",title="Number of Unique Products per Transaction")
-    figure3.update_xaxes(showgrid=False,zeroline=False)
-    figure3.update_yaxes(showgrid=False,showticklabels = True)
-    st.plotly_chart(figure3)
-   
+    col1,col2=st.columns(2)
+    with col1:
+     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
+     unique2=unique[unique["Quantity"]<30]
+     figure3=px.histogram(unique2,x="Quantity")
+     figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="",title="Number of Unique Products per Transaction")
+     figure3.update_xaxes(showgrid=False,zeroline=False)
+     figure3.update_yaxes(showgrid=False,showticklabels = True)
+     st.plotly_chart(figure3)
+    with col2:
+     st.write("The association rules are generated.")
     with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
       
