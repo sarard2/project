@@ -96,7 +96,7 @@ if selected=="RFM":
     with col1:
         st.write("RFM analysis is a marketing technique used to quantitatively rank and group customers based on the recency, frequency and monetary total of their recent transactions to identify the best customers and perform targeted marketing campaigns. The system assigns each customer numerical scores based on these factors to provide an objective analysis.")
     with col2:
-        st.image("home.jpg")
+        st.image("client.jpeg")
 
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
     #Thus, only sales dataframe is considered.
@@ -264,7 +264,8 @@ if selected=="Prediction":
         st.write("Prediction Page")
         st.write("This page focuses on...")
         st.write("This page focuses on...")
-  
+    with col2:
+     st.image("forecast.jpeg")
     st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
     col1,col2=st.columns(2)
     with col1:
