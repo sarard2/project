@@ -292,7 +292,7 @@ if selected=="Prediction":
         st.plotly_chart(fig2)
     with col2:
      values=forecast[["ds","yhat"]]
-     values.columns("Date","Expected Revenue")
+     values.columns=["Date","Expected Revenue"]
      AgGrid(values)
     
     col1,col2=st.columns([2,1])
