@@ -113,8 +113,7 @@ if selected=="Customers":
           <h5 class="card-title">Recency</h5>
           <h6 class="card-subtitle mb-2 text-muted">How recent was the customer's last purchase?</h6>
           <p class="card-text">Customers who recently made a purchase will still have the product on their mind and are more likely to purchase or use the product again. Businesses often measure recency in days.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+         
          </div>
         </div>  """,unsafe_allow_html=True)
     with col2:
@@ -124,8 +123,7 @@ if selected=="Customers":
           <h5 class="card-title">Frequency</h5>
           <h6 class="card-subtitle mb-2 text-muted">How often did this customer make a purchase?</h6>
           <p class="card-text">Customers who purchased once are often are more likely to purchase again. Additionally, first time customers may be good targets for follow-up advertising to convert them into more frequent customers.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+         
          </div>
         </div>  """,unsafe_allow_html=True)
     with col3:
@@ -135,8 +133,7 @@ if selected=="Customers":
           <h5 class="card-title">Monetary</h5>
           <h6 class="card-subtitle mb-2 text-muted">How much money did the customer spend?</h6>
           <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business. The total revenue of each client is calculated during a given period.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+         
          </div>
         </div>  """,unsafe_allow_html=True)
     with col4:
@@ -146,8 +143,7 @@ if selected=="Customers":
           <h5 class="card-title">Customer Segment</h5>
           <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
           <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+        
          </div>
         </div>  """,unsafe_allow_html=True)
     
