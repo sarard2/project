@@ -165,13 +165,13 @@ if selected=="Customers":
     
     col1,col2,col3,col4=st.columns(4)
     with col1:
-        client_select=st.multiselect("Choose first customer:",client1,"Tyrone Wright")
+        client_select=st.multiselect("Choose first customer:",client1,"Terry Klein")
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have selected is",segments)  
     
     with col3:
-        client_select2=st.multiselect("Choose another customer:",client2,"Peter Smith")
+        client_select2=st.multiselect("Choose another customer:",client2,"Raymond Walters")
         selectedclient2=rfm[rfm["Client"].isin(client_select2)]
         segments2=selectedclient2["Segment"].values[0]
         st.write("The client you have selected is",segments2)
