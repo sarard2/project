@@ -92,15 +92,16 @@ if selected=="Overview":
   AgGrid(df_sample)
 
 
-#RFM page
+#Customers page
 if selected=="Customers":
     col1,col2=st.columns(2)
     with col1:
         st.markdown("""<h3>Customer RFM Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
         st.write("The latter is a marketing approach that is used to statistically evaluate and classify clients based on the frequency, total dollar amount, and recency of their most recent transactions.")
         st.write("It aims at pinpointing the best customers and consequently executing focused marketing campaigns.")
-        st.image("client.jpeg")
-
+    with col2:   
+     st.image("client.jpeg")
+     
     #In order to perform customer segmentation, the Invoice Types which are sales are only of interest
     #Thus, only sales dataframe is considered.
     
