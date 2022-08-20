@@ -81,7 +81,8 @@ with col3:
 if selected=="Overview":
  col1,col2=st.columns(2)
  with col1:
-  st.write("Intro")
+  <h3>Retail Analysis<span class="badge bg-secondary">New</span></h3>
+  st.write("This application includes a set of machine learning tools that would allow the company to know more abouts its customers and its transactions.")
  with col2:
   st.image("dashboard.jpeg")
   
