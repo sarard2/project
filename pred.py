@@ -133,7 +133,7 @@ if selected=="Customers":
           <div class="card-body">
           <h5 class="card-title">Monetary</h5>
           <h6 class="card-subtitle mb-2 text-muted">How much money did the customer spend?</h6>
-          <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business. The total revenue is calculated during a given period.</p>
+          <p class="card-text">Customers who spend a lot of money are more likely to spend money in the future and have a high value to a business. The total revenue of each client is calculated during a given period.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
@@ -144,7 +144,7 @@ if selected=="Customers":
           <div class="card-body">
           <h5 class="card-title">Customer Segment</h5>
           <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are segmented into groups. Each group will have different target marketing. </p>
+          <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently according to the overall score.</p>
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
          </div>
