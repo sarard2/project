@@ -14,17 +14,6 @@ import pickle
 #Setting page width to wide
 st.set_page_config(layout="wide")
 
-#Loading Data
-data_file = st.file_uploader("Upload CSV",type=["csv"])
-df = pd.read_csv(data_file)
-#df=pd.read_csv(r"transactions.csv")
-sales=df[df["InvoiceType"]=="Sales"]
-sales['TransDate'] = pd.to_datetime(sales['TransDate'])
-purhases=df[df["InvoiceType"]=="Purchase"]
-returnsales=df[df["InvoiceType"]=="Return Sales"]
-
-
-
 #This is to hide the above white banner appearing
 st.markdown("""
 <style>
@@ -37,8 +26,6 @@ st.markdown("""
     }
 </style>
 """,unsafe_allow_html=True)
-
-
 
 #This is to show the upper banner with links
 st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
@@ -65,7 +52,6 @@ st.markdown("""
 #Setting Default Theme for plotly graphs
 pio.templates.default = "simple_white"
 
-
 #Sidebar Menu
 col1,col2,col3=st.columns([1,3,1])
 with col1:
@@ -88,6 +74,14 @@ with col3:
 
 #Overview page
 if selected=="Overview":
+    #Loading Data
+    data_file = st.file_uploader("Upload CSV",type=["csv"])
+    df = pd.read_csv(data_file)
+    #df=pd.read_csv(r"transactions.csv")
+    sales=df[df["InvoiceType"]=="Sales"]
+    sales['TransDate'] = pd.to_datetime(sales['TransDate'])
+    purhases=df[df["InvoiceType"]=="Purchase"]
+    returnsales=df[df["InvoiceType"]=="Return Sales"]
     with st.expander("Have a look at the dataset format!"):
         df_sample=df.sample(frac=0.25)
         AgGrid(df_sample)
