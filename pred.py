@@ -270,14 +270,14 @@ if selected=="Prediction":
     col1,col2=st.columns(2)
     with col1:
         itemkinds=sales["ItemKind"].unique().tolist()
-        kind_select=st.multiselect("Which Item Kind are you interested in?",itemkinds,"Shoes")
+        kind_select=st.multiselect("Choose an Item Family",itemkinds,"Shoes")
     with col2:
         grouped_df= sales.groupby(['TransDate',"ItemKind"]).Revenue.sum().reset_index()
         grouped_df.columns=["ds","kind","y"]
         prediction=grouped_df[grouped_df["kind"].isin(kind_select)]
         model = Prophet()
         model.fit(prediction)
-        forecastime=st.slider("Choose forecast days",5,35,20)
+        forecastime=st.slider("Choose the Number of Forecast Days",7,45,30)
         data=pd.date_range(start = prediction['ds'].max(), periods = forecastime).tolist()
         future = pd.DataFrame(data, columns=['ds'])
         forecast = model.predict(future)
@@ -286,9 +286,10 @@ if selected=="Prediction":
     col1,col2=st.columns([2,1])
     with col1:
         fig2=plot_plotly(model, forecast)
-        fig2.update_layout(xaxis_title="",yaxis_title="Revenue")
+        fig2.update_layout(xaxis_title="",yaxis_title="Revenue","title="Revenue Forecasts")
         fig2.update_xaxes(showgrid=False,zeroline=False)
         fig2.update_yaxes(showgrid=False,showticklabels = True)
+        
         st.plotly_chart(fig2)
     with col2:
         st.dataframe(forecast[["ds","yhat"]])
