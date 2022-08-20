@@ -286,7 +286,7 @@ if selected=="Prediction":
     col1,col2=st.columns([2,1])
     with col1:
         fig2=plot_plotly(model, forecast)
-        fig2.update_layout(xaxis_title="",yaxis_title="Revenue","title="Revenue Forecasts")
+        fig2.update_layout(xaxis_title="",yaxis_title="Revenue",title="Revenue Forecasts")
         fig2.update_xaxes(showgrid=False,zeroline=False)
         fig2.update_yaxes(showgrid=False,showticklabels = True)
         
