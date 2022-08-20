@@ -164,9 +164,6 @@ if selected=="RFM":
         client_select=st.multiselect("Choose first customer:",client1,"Tyrone Wright")
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
-    st.markdown("""<div class="d-flex" style="height: 200px;">
-                     <div class="vr"></div>
-                   </div>""",unsafe_allow_html=True)
     #with col2:     
         #st.write("The client you have selected is",segments)   
     with col3:
