@@ -83,6 +83,7 @@ if selected=="Overview":
  with col1:
   st.markdown("""<h3>Retail Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True) 
   st.write("This application includes a set of machine learning tools that would allow the company to know more abouts its customers and its transactions.")
+  st.write("The examination of a business’s data aids the management in taking strategic decisions and provides the business with indisputable evidence on the effectiveness of its strategies. ")
  with col2:
   st.image("dashboard.jpeg")
   
