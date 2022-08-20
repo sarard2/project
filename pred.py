@@ -65,7 +65,7 @@ col1,col2,col3=st.columns([1,3,1])
 with col1:
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
 with col2:
-    selected = option_menu(None, ["Overview","RFM","ARM","Prediction"],
+    selected = option_menu(None, ["Overview","Customers","Transactions","Sales Prediction"],
     icons=['house', 'cloud-upload', "list-task", 'gear'],
     menu_icon="cast", default_index=0,orientation="horizontal",
     styles={
@@ -91,7 +91,7 @@ if selected=="Overview":
 
 
 #RFM page
-if selected=="RFM":
+if selected=="Customers":
     col1,col2=st.columns(2)
     with col1:
         st.write("RFM analysis is a marketing technique used to quantitatively rank and group customers based on the recency, frequency and monetary total of their recent transactions to identify the best customers and perform targeted marketing campaigns. The system assigns each customer numerical scores based on these factors to provide an objective analysis.")
@@ -223,7 +223,7 @@ if selected=="RFM":
         
 
 #ARM page
-if selected=="ARM": 
+if selected=="Products": 
     #Model of rules From Pickle File
     rules=pickle.load(open("arm.pkl",'rb'))
     
@@ -255,7 +255,7 @@ if selected=="ARM":
 
 
 #Prediction page
-if selected=="Prediction":
+if selected=="Sales Prediction":
     
     from datetime import datetime
     from prophet.plot import plot_plotly, plot_components_plotly
