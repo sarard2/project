@@ -291,9 +291,9 @@ if selected=="Prediction":
         fig2.update_yaxes(showgrid=False,showticklabels = True)
         st.plotly_chart(fig2)
     with col2:
+     values=forecast[["ds","yhat"]]
+     values.columns=["Date","Expected Revenue"]
      with st.expander("Check out the predicted revenue values!):
-      values=forecast[["ds","yhat"]]
-      values.columns=["Date","Expected Revenue"]
       AgGrid(values)
     
     col1,col2=st.columns([2,1])
