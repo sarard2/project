@@ -243,17 +243,18 @@ if selected=="Transactions":
    
     with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
+      
     col1,col2,col3=st.columns(3)
     with col1:
-      st.markdown(""" 
-         <div class="card" style="width: 18rem;">
-           <div class="card-body">
-           <h5 class="card-title">Customer Segment</h5>
-           <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
-           <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
+     st.markdown(""" 
+       <div class="card" style="width: 18rem;">
+         <div class="card-body">
+         <h5 class="card-title">Customer Segment</h5>
+         <h6 class="card-subtitle mb-2 text-muted">How are customers different?</h6>
+         <p class="card-text">According to the recency, frequency and monetary value, customers are given scores and are then segmented into groups. Each group will be targeted differently. A customer is either "High Value", "Mid Value" or "Low Value".</p>
         
-          </div>
-         </div>  """,unsafe_allow_html=True)
+        </div>
+       </div>  """,unsafe_allow_html=True)
      with col2:
       st.markdown(""" 
         <div class="card" style="width: 18rem;">
