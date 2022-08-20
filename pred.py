@@ -233,13 +233,16 @@ if selected=="Transactions":
     
     col1,col2=st.columns(2)
     with col1:
-        st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. To put it another way, it allows retailers to identify relationships between the items that people buy.")
+     st.markdown("""<h3>Market Basket Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
+     
+     st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. It allows retailers to identify relationships between the items that people buy.")
+     st.write("The growing application of market basket analysis would allow retailers to better anticipate the purchasing habits of customers and to forecast the likelihood of products being purchased together.")
     with col2:
         st.image("money.png")
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
     unique2=unique[unique["Quantity"]<30]
     figure3=px.histogram(unique2,x="Quantity")
-    figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="")
+    figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="",title="Number of Unique Products per Transaction")
     figure3.update_xaxes(showgrid=False,zeroline=False)
     figure3.update_yaxes(showgrid=False,showticklabels = True)
     st.plotly_chart(figure3)
@@ -265,7 +268,7 @@ if selected=="Sales Prediction":
     from prophet.plot import plot_plotly, plot_components_plotly
     col1,col2=st.columns(2)
     with col1:
-        st.write("Prediction Page")
+        st.markdown("""<h3>Forecast Sales Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
         st.write("This page focuses on...")
         st.write("This page focuses on...")
     with col2:
