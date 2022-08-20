@@ -151,7 +151,9 @@ if selected=="RFM":
     </div>
     """,unsafe_allow_html=True)
     
-    rfm=pd.read_csv("rfm.csv") 
+    #Model of rfm From Pickle File
+    rfm=pickle.load(open("rfm.pkl",'rb'))
+    
     client1=df["Client"].unique().tolist()
     client2=df["Client"].unique().tolist()
     
