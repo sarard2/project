@@ -269,8 +269,9 @@ if selected=="Sales Prediction":
     col1,col2=st.columns(2)
     with col1:
         st.markdown("""<h3>Forecast Sales Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
-        st.write("This page focuses on...")
-        st.write("This page focuses on...")
+        st.write("Forecasting is a procedure for estimating the future sales trend based on past sales behavior. ")
+        st.write("This is of great importance for a business as it allows it to allocate resources in an efficient and timely manner and enhance future growth.")
+        st.write("The library Prophet is used for the forecasting. ")
     with col2:
      st.image("forecast.jpeg")
     st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
