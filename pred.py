@@ -227,7 +227,7 @@ if selected=="ARM":
     #Model of rules From Pickle File
     rules=pickle.load(open("arm.pkl",'rb'))
     
-    col1,col2=st.columns(2)
+    col1,col2=st.columns([2,1])
     with col1:
         st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. To put it another way, it allows retailers to identify relationships between the items that people buy.")
     with col2:
