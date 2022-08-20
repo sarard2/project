@@ -81,6 +81,18 @@ with col2:
 with col3:
     st.markdown("""<hr style="height:3px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
 
+def set_bg_hack_url():    
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background: url("https://export-download.canva.com/IuXOY/DAFJsYIuXOY/2/0/0001-33194288279.jpg"):
+        background-size: cover
+    }}
+   </style>
+   """,unsafe_allow_html=True)
+    
+    
 
 #Overview page
 if selected=="Overview":
