@@ -244,7 +244,7 @@ if selected=="Transactions":
      st.plotly_chart(figure3)
     with col2:
      st.write("The association rules are generated.")
-    with st.expander("Have a look at the dataset format!"):  
+     with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
       
     col1,col2,col3=st.columns(3)
