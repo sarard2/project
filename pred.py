@@ -282,8 +282,7 @@ if selected=="Transactions":
     col1,col2=st.columns(2)
     with col1:
      st.write("The association rules are generated.")
-     with st.expander("Have a look at the dataset format!"):  
-        AgGrid(rules)
+     AgGrid(rules)
      
     with col2:
      st.markdown("""
