@@ -233,6 +233,62 @@ if selected=="Transactions":
      st.write("The growing application of market basket analysis would allow retailers to better anticipate the purchasing habits of customers and to forecast the likelihood of products being purchased together.")
     with col2:
         st.image("money.png")
+    
+    col1,col2,col3,col4=st.columns(4)
+    with col1:
+     st.markdown(""" 
+       <div class="card" style="width: 18rem;">
+         <div class="card-body">
+         <h5 class="card-title">Assocaition Rules</h5>
+         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the itemset occurs. </h6>
+         <p class="card-text">The support represents the probability that two items/itemsets appearing together in the dataset. </p>
+        
+        </div>
+       </div>  """,unsafe_allow_html=True)
+    with col2:
+     st.markdown(""" 
+       <div class="card" style="width: 18rem;">
+         <div class="card-body">
+         <h5 class="card-title">Support</h5>
+         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the itemset occurs. </h6>
+         <p class="card-text">The support represents the probability that two items/itemsets appearing together in the dataset. </p>
+        
+        </div>
+       </div>  """,unsafe_allow_html=True)
+     with col3:
+      st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Confidence</h5>
+          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greater the likelihood that the other item will be purchased. </h6>
+          <p class="card-text">The confidence represents the probability that a transaction which contains the antecedent itemset also contains the consequent item. </p>
+        
+         </div>
+        </div>  """,unsafe_allow_html=True)
+     with col4:
+      st.markdown(""" 
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Lift</h5>
+          <h6 class="card-subtitle mb-2 text-muted">The larger the lift the greater the link between the two products.</h6>
+          <p class="card-text">The lift represents the increase in expectation that a customer will buy the consequent item, given that he has bought the antecedent itemset. </p>
+        
+         </div>
+        </div>  """,unsafe_allow_html=True)
+    st.markdown("""
+    <div class="alert alert-secondary" role="alert">
+    </div>
+    """,unsafe_allow_html=True)
+    
+    st.markdown("""
+    <ul class="list-group list-group-flush">
+     <li class="list-group-item">item</li>
+     <li class="list-group-item">A second item</li>
+     <li class="list-group-item">A third item</li>
+     <li class="list-group-item">A fourth item</li>
+     <li class="list-group-item">And a fifth one</li>
+     </ul>""",unsafe_allow_html=True)
+    
     col1,col2=st.columns(2)
     with col1:
      unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
@@ -247,46 +303,7 @@ if selected=="Transactions":
      with st.expander("Have a look at the dataset format!"):  
         AgGrid(rules)
       
-    col1,col2,col3=st.columns(3)
-    with col1:
-     st.markdown(""" 
-       <div class="card" style="width: 18rem;">
-         <div class="card-body">
-         <h5 class="card-title">Support</h5>
-         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the itemset occurs. </h6>
-         <p class="card-text">The support represents the probability that two items/itemsets appearing together in the dataset. </p>
-        
-        </div>
-       </div>  """,unsafe_allow_html=True)
-     with col2:
-      st.markdown(""" 
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-          <h5 class="card-title">Confidence</h5>
-          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greater the likelihood that the other item will be purchased. </h6>
-          <p class="card-text">The confidence represents the probability that a transaction which contains the antecedent itemset also contains the consequent item. </p>
-        
-         </div>
-        </div>  """,unsafe_allow_html=True)
-     with col3:
-      st.markdown(""" 
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-          <h5 class="card-title">Lift</h5>
-          <h6 class="card-subtitle mb-2 text-muted">The larger the lift the greater the link between the two products.</h6>
-          <p class="card-text">The lift represents the increase in expectation that a customer will buy the consequent item, given that he has bought the antecedent itemset. </p>
-        
-         </div>
-        </div>  """,unsafe_allow_html=True)
     
-    st.markdown("""
-    <ul class="list-group list-group-flush">
-     <li class="list-group-item">item</li>
-     <li class="list-group-item">A second item</li>
-     <li class="list-group-item">A third item</li>
-     <li class="list-group-item">A fourth item</li>
-     <li class="list-group-item">And a fifth one</li>
-     </ul>""",unsafe_allow_html=True)
 
 
 #Prediction page
