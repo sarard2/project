@@ -279,8 +279,14 @@ if selected=="Transactions":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-    
-    st.markdown("""
+    col1,col2=st.columns(2)
+    with col1:
+     st.write("The association rules are generated.")
+     with st.expander("Have a look at the dataset format!"):  
+        AgGrid(rules)
+     
+    with col2:
+     st.markdown("""
     <ul class="list-group list-group-flush">
      <li class="list-group-item">item</li>
      <li class="list-group-item">A second item</li>
@@ -288,21 +294,14 @@ if selected=="Transactions":
      <li class="list-group-item">A fourth item</li>
      <li class="list-group-item">And a fifth one</li>
      </ul>""",unsafe_allow_html=True)
-    
-    col1,col2=st.columns(2)
-    with col1:
-     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
-     unique2=unique[unique["Quantity"]<30]
-     figure3=px.histogram(unique2,x="Quantity")
-     figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="",title="Number of Unique Products per Transaction")
-     figure3.update_xaxes(showgrid=False,zeroline=False)
-     figure3.update_yaxes(showgrid=False,showticklabels = True)
-     st.plotly_chart(figure3)
-    with col2:
-     st.write("The association rules are generated.")
-     with st.expander("Have a look at the dataset format!"):  
-        AgGrid(rules)
-      
+     
+    unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
+    unique2=unique[unique["Quantity"]<30]
+    figure3=px.histogram(unique2,x="Quantity")
+    figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="",title="Number of Unique Products per Transaction")
+    figure3.update_xaxes(showgrid=False,zeroline=False)
+    figure3.update_yaxes(showgrid=False,showticklabels = True)
+    st.plotly_chart(figure3)
     
 
 
