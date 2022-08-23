@@ -279,7 +279,7 @@ if selected=="Transactions":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-    col1,col2=st.columns(2)
+    col1,col2=st.columns([2,1])
     with col1:
      AgGrid(rules)
      
