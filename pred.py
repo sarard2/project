@@ -281,7 +281,6 @@ if selected=="Transactions":
     """,unsafe_allow_html=True)
     col1,col2=st.columns(2)
     with col1:
-     st.write("The association rules are generated.")
      AgGrid(rules)
      
     with col2:
