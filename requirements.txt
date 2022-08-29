@@ -1,10 +1,10 @@
 matplotlib
 pandas
 numpy
+pickle
 plotly
 datetime
 seaborn
-pickle
 streamlit
 streamlit-option-menu
 sklearn
