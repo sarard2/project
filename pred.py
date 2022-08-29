@@ -295,6 +295,7 @@ if selected=="Transactions":
     conseq=filteredd["consequents"].values[0]
     ant=rules["antecedents"].unique().tolist()
     cons=rules["consequents"].unique().tolist()
+    st.write(ant)
     ant_select=st.multiselect("Product",ant,"singlet_gear")
     cons_select=st.multiselect("Recommended",cons,"scooter_ski")
     st.write("The purchase of",antec,"lift up the purchase of",conseq,"by",liftvalue)
