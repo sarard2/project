@@ -274,6 +274,7 @@ if selected=="Transactions":
         
          </div>
         </div>  """,unsafe_allow_html=True)
+    st.write("")
     st.markdown("""
     <div class="alert alert-secondary" role="alert">
     </div>
