@@ -161,7 +161,7 @@ if selected=="Customers":
     
     col1,col2,col3,col4=st.columns(4)
     with col1:
-        client_select=st.multiselect("Choose first customer:",client1,"Terry Klein")
+        client_select=st.multiselect("Choose a customer:",client1,"Terry Klein")
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have chosen is a",segments, "client and has the following scores:")  
@@ -238,9 +238,9 @@ if selected=="Transactions":
      st.markdown(""" 
        <div class="card" style="width: 18rem;">
          <div class="card-body">
-         <h5 class="card-title">Assocaition Rules</h5>
-         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the itemset occurs. </h6>
-         <p class="card-text">The support represents the probability that two items/itemsets appearing together in the dataset. </p>
+         <h5 class="card-title">Association Rules</h5>
+         <h6 class="card-subtitle mb-2 text-muted">Association rules are used to predict the likelihood of products being purchased together.</h6>
+         <p class="card-text">Association rule mining finds interesting associations and relationships among large sets of data items.</p>
         
         </div>
        </div>  """,unsafe_allow_html=True)
