@@ -305,19 +305,19 @@ if selected=="Transactions":
     conseq1=rules["consequents"].values[1]
     st.write("The purchase of",antec1,"lift up the purchase of",conseq1,"by",liftvalue1)
     
-    liftvalue2=rules["lift"].values[2]
-    antec2=rules["antecedents"].values[2]
-    conseq2=rules["consequents"].values[2]
+    liftvalue2=rules["lift"].values[3]
+    antec2=rules["antecedents"].values[3]
+    conseq2=rules["consequents"].values[3]
     st.write("The purchase of",antec2,"lift up the purchase of",conseq2,"by",liftvalue2)
     
-    liftvalue3=rules["lift"].values[3]
-    antec3=rules["antecedents"].values[3]
-    conseq3=rules["consequents"].values[3]
+    liftvalue3=rules["lift"].values[5]
+    antec3=rules["antecedents"].values[5]
+    conseq3=rules["consequents"].values[5]
     st.write("The purchase of",antec3,"lift up the purchase of",conseq3,"by",liftvalue)
     
-    liftvalue4=rules["lift"].values[4]
-    antec4=rules["antecedents"].values[4]
-    conseq4=rules["consequents"].values[4]
+    liftvalue4=rules["lift"].values[7]
+    antec4=rules["antecedents"].values[7]
+    conseq4=rules["consequents"].values[7]
     st.write("The purchase of",antec4,"lift up the purchase of",conseq4,"by",liftvalue4)
 
      
