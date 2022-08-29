@@ -313,7 +313,7 @@ if selected=="Transactions":
     figure3.update_layout(xaxis_title="Number of Unique Items",yaxis_title="",title="Number of Unique Products per Transaction")
     figure3.update_xaxes(showgrid=False,zeroline=False)
     figure3.update_yaxes(showgrid=False,showticklabels = True)
-    st.plotly_chart(figure3)
+    #st.plotly_chart(figure3)
     
 
 
