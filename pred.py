@@ -279,6 +279,7 @@ if selected=="Transactions":
     </div>
     """,unsafe_allow_html=True)
     
+    number = st.number_input('Insert a number',min_value=2,max_value=50)
     AgGrid(rules)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
