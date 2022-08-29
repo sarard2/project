@@ -325,7 +325,7 @@ if selected=="Sales Prediction":
     from prophet.plot import plot_plotly, plot_components_plotly
     col1,col2=st.columns(2)
     with col1:
-        st.markdown("""<h3>Forecast Sales Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
+        st.markdown("""<h3>Sales Prediction Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
         st.write("Forecasting is a procedure for estimating the future sales trend based on past sales behavior. ")
         st.write("This is of great importance for a business as it allows it to allocate resources in an efficient and timely manner and enhance future growth.")
         st.write("The library Prophet is used for the forecasting. ")
