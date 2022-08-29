@@ -281,20 +281,7 @@ if selected=="Transactions":
     rules["support"]=rules["support"].round(4)
     rules["confidence"]=rules["confidence"].round(2)
     rules["lift"]=rules["lift"].round(2)
-    #minsup=rules["support"].min()
-    #maxsup=rules["support"].max()
-    AgGrid(rules)
-    #number = st.number_input('Top N Rules',min_value=2,max_value=50)
-    #support = st.slider('Support',0.0002,1.0,0.0059)
-    #confidence = st.slider('Confidence',0.01,0.9,0.59)
-    #filtered=rules[(rules["support"]==support)&(rules["confidence"]==confidence)]
-    #filteredd=filtered.reset_index()
-    #ant=rules["antecedents"].unique().tolist()
-    #cons=rules["consequents"].unique().tolist()
-    #st.write(ant)
-    #ant_select=st.multiselect("Product",ant,"({'bow tie_mini'})")
-    #cons_select=st.multiselect("Recommended",cons,"({'bow tie_mirror'})")
-    
+    #AgGrid(rules)
     liftvalue=rules["lift"].values[0]
     antec=rules["antecedents"].values[0]
     conseq=rules["consequents"].values[0]
@@ -320,7 +307,6 @@ if selected=="Transactions":
     conseq4=rules["consequents"].values[7]
     st.write("The purchase of",antec4,"lift up the purchase of",conseq4,"by",liftvalue4)
 
-     
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
     unique2=unique[unique["Quantity"]<30]
     figure3=px.histogram(unique2,x="Quantity")
