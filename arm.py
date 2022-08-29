@@ -3,6 +3,7 @@
 ## Apriori
 """
 import pandas as pd
+import pickle
 import matplotlib as plt
 df=pd.read_csv("transactions.csv")
 sales=df[(df['InvoiceType']=="Sales")]
