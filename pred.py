@@ -281,7 +281,7 @@ if selected=="Transactions":
     """,unsafe_allow_html=True)
     col1,col2=st.columns([2,1])
     with col1:
-     st.dataframe(rules)
+     st.write(rules)
      AgGrid(rules)
      
     with col2:
