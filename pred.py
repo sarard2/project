@@ -1,4 +1,5 @@
 import pandas as pd
+import pickle
 import streamlit as st
 import matplotlib as plt
 import numpy
@@ -9,7 +10,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 from prophet import Prophet
 import plotly.io as pio
-import pickle
 
 #Setting page width to wide
 st.set_page_config(layout="wide")
