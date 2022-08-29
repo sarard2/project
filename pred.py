@@ -14,7 +14,7 @@ import plotly.io as pio
 #Setting page width to wide
 st.set_page_config(layout="wide")
 
-#Loading Data
+#Loading Dat
  
 df=pd.read_csv(r"transactions.csv")
 sales=df[df["InvoiceType"]=="Sales"]
