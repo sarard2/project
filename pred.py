@@ -278,14 +278,16 @@ if selected=="Transactions":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-    
-    number = st.number_input('Top N Rules',min_value=2,max_value=50)
-    support = st.slider('Support',0.0005,1.0,0.004)
-    confidence = st.slider('Confidence',0.002,1.0,0.05)
-    filtered=rules[rules["support"]==support]
     rules["support"]=rules["support"].round(4)
     rules["confidence"]=rules["confidence"].round(2)
     rules["lift"]=rules["lift"].round(2)
+    minsup=rules["support"].min()
+    maxsup=rules["support"].max()
+    
+    number = st.number_input('Top N Rules',min_value=2,max_value=50)
+    support = st.slider('Support',minsup,maxsup,0.004)
+    confidence = st.slider('Confidence',0.002,1.0,0.05)
+    filtered=rules[rules["support"]==support]
     AgGrid(rules)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
