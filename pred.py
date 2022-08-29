@@ -289,8 +289,10 @@ if selected=="Transactions":
     confidence = st.slider('Confidence',0.01,0.9,0.59)
     filtered=rules[(rules["support"]==support)&(rules["confidence"]==confidence)]
     filteredd=filtered.reset_index()
-    liftvalue=filteredd["lift"].values[0]
-    st.write("hi",liftvalue)
+    liftvalue=filtered["lift"].values[0]
+    antec=filtered["antecedent"].values[0]
+    conseq=filtered["consequent"].values[0]
+    st.write("The purchase of",antec, "lift up the purchase of" , conseq, "by", liftvalue)
     AgGrid(filteredd)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
