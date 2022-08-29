@@ -313,7 +313,7 @@ if selected=="Transactions":
     liftvalue3=rules["lift"].values[5]
     antec3=rules["antecedents"].values[5]
     conseq3=rules["consequents"].values[5]
-    st.write("The purchase of",antec3,"lift up the purchase of",conseq3,"by",liftvalue)
+    st.write("The purchase of",antec3,"lift up the purchase of",conseq3,"by",liftvalue3)
     
     liftvalue4=rules["lift"].values[7]
     antec4=rules["antecedents"].values[7]
