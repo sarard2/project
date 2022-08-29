@@ -290,7 +290,7 @@ if selected=="Transactions":
     #confidence = st.slider('Confidence',0.01,0.9,0.59)
     #filtered=rules[(rules["support"]==support)&(rules["confidence"]==confidence)]
     #filteredd=filtered.reset_index()
-    liftvalue=rules["lift"].values[0]
+    liftvalue=rules["lift"].values[0,1]
     antec=rules["antecedents"].values[0]
     conseq=rules["consequents"].values[0]
     #ant=rules["antecedents"].unique().tolist()
