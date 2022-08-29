@@ -290,7 +290,7 @@ if selected=="Transactions":
     filtered=rules[(rules["support"]==support)&(rules["confidence"]==confidence)]
     filteredd=filtered.reset_index()
     liftvalue=filteredd["lift"].values[0]
-    st.write("hi",lifevalue)
+    st.write("hi",liftvalue)
     AgGrid(filteredd)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
