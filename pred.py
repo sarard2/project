@@ -295,8 +295,8 @@ if selected=="Transactions":
     conseq=filteredd["consequents"].values[0]
     ant=rules["antecedents"].unique().tolist()
     cons=rules["consequents"].unique().tolist()
-    ant_select=st.multiselect("Product",ant,"headwrap_meal")
-    cons_select=st.multiselect("Recommended",cons,"sunglass_metal")
+    ant_select=st.multiselect("Product",ant,"singlet_gear")
+    cons_select=st.multiselect("Recommended",cons,"scooter_ski")
     st.write("The purchase of",antec,"lift up the purchase of",conseq,"by",liftvalue)
     AgGrid(filteredd)
      
