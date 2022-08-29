@@ -284,22 +284,42 @@ if selected=="Transactions":
     #minsup=rules["support"].min()
     #maxsup=rules["support"].max()
     #AgGrid(rules)
-    
     #number = st.number_input('Top N Rules',min_value=2,max_value=50)
     #support = st.slider('Support',0.0002,1.0,0.0059)
     #confidence = st.slider('Confidence',0.01,0.9,0.59)
     #filtered=rules[(rules["support"]==support)&(rules["confidence"]==confidence)]
     #filteredd=filtered.reset_index()
-    liftvalue=rules["lift"].values[0,1]
-    antec=rules["antecedents"].values[0]
-    conseq=rules["consequents"].values[0]
     #ant=rules["antecedents"].unique().tolist()
     #cons=rules["consequents"].unique().tolist()
     #st.write(ant)
     #ant_select=st.multiselect("Product",ant,"({'bow tie_mini'})")
     #cons_select=st.multiselect("Recommended",cons,"({'bow tie_mirror'})")
+    
+    liftvalue=rules["lift"].values[0]
+    antec=rules["antecedents"].values[0]
+    conseq=rules["consequents"].values[0]
     st.write("The purchase of",antec,"lift up the purchase of",conseq,"by",liftvalue)
-    #AgGrid(filtered)
+    
+    liftvalue1=rules["lift"].values[1]
+    antec1=rules["antecedents"].values[1]
+    conseq1=rules["consequents"].values[1]
+    st.write("The purchase of",antec1,"lift up the purchase of",conseq1,"by",liftvalue1)
+    
+    liftvalue2=rules["lift"].values[2]
+    antec2=rules["antecedents"].values[2]
+    conseq2=rules["consequents"].values[2]
+    st.write("The purchase of",antec2,"lift up the purchase of",conseq2,"by",liftvalue2)
+    
+    liftvalue3=rules["lift"].values[3]
+    antec3=rules["antecedents"].values[3]
+    conseq3=rules["consequents"].values[3]
+    st.write("The purchase of",antec3,"lift up the purchase of",conseq3,"by",liftvalue)
+    
+    liftvalue4=rules["lift"].values[4]
+    antec4=rules["antecedents"].values[4]
+    conseq4=rules["consequents"].values[4]
+    st.write("The purchase of",antec4,"lift up the purchase of",conseq4,"by",liftvalue4)
+
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
     unique2=unique[unique["Quantity"]<30]
