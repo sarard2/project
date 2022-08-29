@@ -280,8 +280,8 @@ if selected=="Transactions":
     """,unsafe_allow_html=True)
     
     number = st.number_input('Top N Rules',min_value=2,max_value=50)
-    support = st.slider('Support',0,0.03,0.02)
-    confidence = st.slider('Confidence',0,0.9,0.5)
+    support = st.slider('Support',0,1,1)
+    confidence = st.slider('Confidence',0,1,1)
     AgGrid(rules)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
