@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib as plt
+import pickle
 df=pd.read_csv("transactions.csv")
 sales=df[(df['InvoiceType']=="Sales")]
 """# RFM Clustering Using Kmeans"""
