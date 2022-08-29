@@ -283,6 +283,9 @@ if selected=="Transactions":
     support = st.slider('Support',0.0005,1.0,0.004)
     confidence = st.slider('Confidence',0.002,1.0,0.05)
     filtered=rules[rules["support"]==support]
+    rules["support"]=rules["support"].round(4)
+    rules["confidence"]=rules["confidence"].round(2)
+    rules["lift"]=rules["lift"].round(2)
     AgGrid(rules)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
