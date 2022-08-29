@@ -281,12 +281,12 @@ if selected=="Transactions":
     rules["support"]=rules["support"].round(4)
     rules["confidence"]=rules["confidence"].round(2)
     rules["lift"]=rules["lift"].round(2)
-    minsup=rules["support"].min()
-    maxsup=rules["support"].max()
+    #minsup=rules["support"].min()
+    #maxsup=rules["support"].max()
     
     number = st.number_input('Top N Rules',min_value=2,max_value=50)
-    support = st.slider('Support',minsup,maxsup,0.004)
-    confidence = st.slider('Confidence',0.002,1.0,0.05)
+    support = st.slider('Support',0.0001,0.1,0.0059)
+    confidence = st.slider('Confidence',0.01,0.9,0.59)
     filtered=rules[rules["support"]==support]
     AgGrid(rules)
      
