@@ -283,7 +283,7 @@ if selected=="Transactions":
     rules["lift"]=rules["lift"].round(2)
     #minsup=rules["support"].min()
     #maxsup=rules["support"].max()
-    #AgGrid(rules)
+    AgGrid(rules)
     #number = st.number_input('Top N Rules',min_value=2,max_value=50)
     #support = st.slider('Support',0.0002,1.0,0.0059)
     #confidence = st.slider('Confidence',0.01,0.9,0.59)
