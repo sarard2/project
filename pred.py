@@ -225,7 +225,6 @@ if selected=="Customers":
 if selected=="Transactions": 
     #Model of rules From Pickle File
     rules=pickle.load(open("arm.pkl",'rb'))
-    
     col1,col2=st.columns(2)
     with col1:
      st.markdown("""<h3>Market Basket Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
@@ -281,7 +280,7 @@ if selected=="Transactions":
     """,unsafe_allow_html=True)
     col1,col2=st.columns([2,1])
     with col1:
-     st.write(rules)
+     
      AgGrid(rules)
      
     with col2:
