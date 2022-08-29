@@ -278,20 +278,8 @@ if selected=="Transactions":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
-    col1,col2=st.columns([2,1])
-    with col1:
-     
-     AgGrid(rules)
-     
-    with col2:
-     st.markdown("""
-    <ul class="list-group list-group-flush">
-     <li class="list-group-item">item</li>
-     <li class="list-group-item">A second item</li>
-     <li class="list-group-item">A third item</li>
-     <li class="list-group-item">A fourth item</li>
-     <li class="list-group-item">And a fifth one</li>
-     </ul>""",unsafe_allow_html=True)
+    
+    AgGrid(rules)
      
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
     unique2=unique[unique["Quantity"]<30]
