@@ -239,7 +239,7 @@ if selected=="Transactions":
        <div class="card" style="width: 18rem;">
          <div class="card-body">
          <h5 class="card-title">Association Rules</h5>
-         <h6 class="card-subtitle mb-2 text-muted">They are used to predict products being purchased together.</h6>
+         <h6 class="card-subtitle mb-2 text-muted">These rules are used to predict products being purchased together.</h6>
          <p class="card-text">Association rule mining finds interesting associations and relationships among large sets of data items.</p>
         
         </div>
@@ -249,8 +249,8 @@ if selected=="Transactions":
        <div class="card" style="width: 18rem;">
          <div class="card-body">
          <h5 class="card-title">Support</h5>
-         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the itemset occurs. </h6>
-         <p class="card-text">The support represents the probability that two items/itemsets appearing together in the dataset. </p>
+         <h6 class="card-subtitle mb-2 text-muted">The higher the support the more frequently the item is purchased. </h6>
+         <p class="card-text">The support represents the probability that two items/itemsets appear together in the transactional dataset. </p>
         
         </div>
        </div>  """,unsafe_allow_html=True)
@@ -259,7 +259,7 @@ if selected=="Transactions":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Confidence</h5>
-          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greatr the likelihood the other item will be purchased. </h6>
+          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greater the likelihood the other item will be purchased. </h6>
           <p class="card-text">The confidence represents the probability that a transaction which contains the antecedent itemset also contains the consequent item. </p>
         
          </div>
@@ -269,7 +269,7 @@ if selected=="Transactions":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Lift</h5>
-          <h6 class="card-subtitle mb-2 text-muted">The higher the lift the greater the link between the two products.</h6>
+          <h6 class="card-subtitle mb-2 text-muted">The higher the lift the greater the link between the products.</h6>
           <p class="card-text">The lift represents the increase in expectation that a customer will buy the consequent item, given that he has bought the antecedent itemset. </p>
         
          </div>
