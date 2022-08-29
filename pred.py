@@ -296,8 +296,8 @@ if selected=="Transactions":
     ant=rules["antecedents"].unique().tolist()
     cons=rules["consequents"].unique().tolist()
     st.write(ant)
-    ant_select=st.multiselect("Product",ant,"singlet_gear")
-    cons_select=st.multiselect("Recommended",cons,"scooter_ski")
+    ant_select=st.multiselect("Product",ant,"frozenset({'bow tie_mini'})")
+    cons_select=st.multiselect("Recommended",cons,"frozenset({'bow tie_mirror'})")
     st.write("The purchase of",antec,"lift up the purchase of",conseq,"by",liftvalue)
     AgGrid(filteredd)
      
