@@ -260,7 +260,7 @@ if selected=="Transactions":
           <div class="card-body">
           <h5 class="card-title">Confidence</h5>
           <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greater the likelihood the other item will be purchased. </h6>
-          <p class="card-text">The confidence represents the probability that a transaction which contains the antecedent itemset also contains the consequent item. </p>
+          <p class="card-text">The confidence represents the probability that a transaction which contains an item contains another. </p>
         
          </div>
         </div>  """,unsafe_allow_html=True)
