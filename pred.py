@@ -239,7 +239,7 @@ if selected=="Transactions":
        <div class="card" style="width: 18rem;">
          <div class="card-body">
          <h5 class="card-title">Association Rules</h5>
-         <h6 class="card-subtitle mb-2 text-muted">Association rules are used to predict the likelihood of products being purchased together.</h6>
+         <h6 class="card-subtitle mb-2 text-muted">They are used to predict products being purchased together.</h6>
          <p class="card-text">Association rule mining finds interesting associations and relationships among large sets of data items.</p>
         
         </div>
@@ -259,7 +259,7 @@ if selected=="Transactions":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Confidence</h5>
-          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greater the likelihood that the other item will be purchased. </h6>
+          <h6 class="card-subtitle mb-2 text-muted">The higher the confidence the greatr the likelihood the other item will be purchased. </h6>
           <p class="card-text">The confidence represents the probability that a transaction which contains the antecedent itemset also contains the consequent item. </p>
         
          </div>
@@ -269,7 +269,7 @@ if selected=="Transactions":
         <div class="card" style="width: 18rem;">
           <div class="card-body">
           <h5 class="card-title">Lift</h5>
-          <h6 class="card-subtitle mb-2 text-muted">The larger the lift the greater the link between the two products.</h6>
+          <h6 class="card-subtitle mb-2 text-muted">The higher the lift the greater the link between the two products.</h6>
           <p class="card-text">The lift represents the increase in expectation that a customer will buy the consequent item, given that he has bought the antecedent itemset. </p>
         
          </div>
@@ -278,6 +278,7 @@ if selected=="Transactions":
     <div class="alert alert-secondary" role="alert">
     </div>
     """,unsafe_allow_html=True)
+    
     rules["support"]=rules["support"].round(4)
     rules["confidence"]=rules["confidence"].round(2)
     rules["lift"]=rules["lift"].round(2)
