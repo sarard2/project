@@ -225,7 +225,7 @@ if selected=="Customers":
 if selected=="Transactions": 
     #Model of rules From Pickle File
     rules=pickle.load(open("arm.pkl",'rb'))
-    col1,col2=st.columns(2)
+    col1,col2=st.columns([1,2])
     with col2:
      st.markdown("""<h3>Market Basket Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
      st.write("Market Basket Analysis is one of the key techniques used by large retailers to uncover associations between items. It works by looking for combinations of items that occur together frequently in transactions. It allows retailers to identify relationships between the items that people buy.")
