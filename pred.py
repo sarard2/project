@@ -182,9 +182,7 @@ if selected=="Customers":
     with col3:
         monetary_value=selectedclient["Revenue"]
         st.metric(label="Revenue", value=monetary_value)
-    #with col4:
-        #overall_value=selectedclient["OverallScore"]
-        #st.metric(label="Overall Score", value=overall_value)
+
     with col5: 
         recency_value2=selectedclient2["Recency"]
         st.metric(label="Recency", value=recency_value2)
@@ -194,9 +192,7 @@ if selected=="Customers":
     with col7:
         monetary_value2=selectedclient2["Revenue"]
         st.metric(label="Revenue", value=monetary_value2)
-    #with col8:
-        #overall_value2=selectedclient2["OverallScore"]
-        #st.metric(label="Overall Score", value=overall_value2)  
+
         
         
     clientsales=sales[sales["Client"].isin(client_select)]
@@ -361,6 +357,7 @@ if selected=="Sales Prediction":
      st.write("The blue area represents the sales prediction with upper and lowers limits")
      values=forecast[["ds","yhat"]]
      values.columns=["Date","Expected Revenue"]
+     values["Expected Revenue"]=values["Expected Revenue"].round()
      with st.expander("Have a look at the predicted revenue values!"):
       AgGrid(values)
     
