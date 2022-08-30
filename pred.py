@@ -162,6 +162,7 @@ if selected=="Customers":
     col1,col2,col3,col4=st.columns(4)
     with col1:
         client_select=st.multiselect("Choose a customer:",client1,"Terry Klein")
+        rfm["Revenue"]=rfm["Revenue"].round()
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have chosen is a",segments, "client and has the following scores:")  
