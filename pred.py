@@ -325,9 +325,10 @@ if selected=="Sales Prediction":
     col1,col2=st.columns(2)
     with col1:
         st.markdown("""<h3>Sales Prediction Analysis<span class="badge bg-secondary"></span></h3>""", unsafe_allow_html=True)
-        st.write("Forecasting is a procedure for estimating the future sales trend based on past sales behavior. ")
-        st.write("This is of great importance for a business as it allows it to allocate resources in an efficient and timely manner and enhance future growth.")
-        st.write("The library Prophet is used for the forecasting. ")
+        st.write("Forecasting is a procedure for estimating the future sales trend based on past sales behavior. This is of great importance for a business as it allows it to allocate resources in an efficient and timely manner and enhance future growth.")
+        st.write("The library Prophet is used for the forecasting which is an additive time series forecasting tool based on non-linear regression models.")
+        st.write("The data is split into training and test to evaluate the model, 30 days are included in the test set and 520 days are included in the train set")
+        st.write("The model has an RMSE which represents 43%.")
     with col2:
      st.image("forecast.jpeg")
     st.markdown("""<hr style="height:5px;border:none;color:#00ced1;background-color:#1F628E;" /> """, unsafe_allow_html=True)
