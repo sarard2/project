@@ -122,7 +122,7 @@ if selected=="Customers":
           <div class="card-body">
           <h5 class="card-title">Frequency</h5>
           <h6 class="card-subtitle mb-2 text-muted">How often did this customer make a purchase?</h6>
-          <p class="card-text">Customers who purchased once are often are more likely to purchase again. Additionally, first time customers may be good targets for follow-up advertising to convert them into more frequent customers.</p>
+          <p class="card-text">Customers who purchased once are often more likely to purchase again. Additionally, first time customers may be good targets for follow-up advertising to convert them into more frequent customers.</p>
          
          </div>
         </div>  """,unsafe_allow_html=True)
