@@ -163,7 +163,7 @@ if selected=="Customers":
     with col1:
         client_select=st.multiselect("Choose a customer:",client1,"Terry Klein")
         rfm["Revenue"]=rfm["Revenue"].round()
-        rfm["Revenue"].astype(int)
+        rfm["Revenue"]=rfm["Revenue"].astype(int)
         selectedclient=rfm[rfm["Client"].isin(client_select)]
         segments=selectedclient["Segment"].values[0]
         st.write("The client you have chosen is a",segments, "client and has the following scores:")  
@@ -180,7 +180,7 @@ if selected=="Customers":
         st.metric(label="Recency (days)", value=recency_value)
     with col2:
         freq_value=selectedclient["Frequency"]
-        st.metric(label="Frequency (unique purchases)", value=freq_value)
+        st.metric(label="Frequency (purchases)", value=freq_value)
     with col3:
         monetary_value=selectedclient["Revenue"]
         st.metric(label="Revenue ($)", value=monetary_value)
@@ -190,7 +190,7 @@ if selected=="Customers":
         st.metric(label="Recency (days)", value=recency_value2)
     with col6:
         freq_value2=selectedclient2["Frequency"]
-        st.metric(label="Frequency (unique purchases)", value=freq_value2)
+        st.metric(label="Frequency (purchases)", value=freq_value2)
     with col7:
         monetary_value2=selectedclient2["Revenue"]
         st.metric(label="Revenue ($)", value=monetary_value2)
