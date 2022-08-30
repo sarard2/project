@@ -285,27 +285,27 @@ if selected=="Transactions":
     liftvalue=rules["lift"].values[0]
     antec=rules["antecedents"].values[0]
     conseq=rules["consequents"].values[0]
-    st.write("The purchase of",antec,"lift up the purchase of",conseq,"by",liftvalue)
+    st.write("The purchase of",antec,"lifts up the purchase of",conseq,"by",liftvalue)
     
     liftvalue1=rules["lift"].values[1]
     antec1=rules["antecedents"].values[1]
     conseq1=rules["consequents"].values[1]
-    st.write("The purchase of",antec1,"lift up the purchase of",conseq1,"by",liftvalue1)
+    st.write("The purchase of",antec1,"lifts up the purchase of",conseq1,"by",liftvalue1)
     
     liftvalue2=rules["lift"].values[3]
     antec2=rules["antecedents"].values[3]
     conseq2=rules["consequents"].values[3]
-    st.write("The purchase of",antec2,"lift up the purchase of",conseq2,"by",liftvalue2)
+    st.write("The purchase of",antec2,"lifts up the purchase of",conseq2,"by",liftvalue2)
     
     liftvalue3=rules["lift"].values[5]
     antec3=rules["antecedents"].values[5]
     conseq3=rules["consequents"].values[5]
-    st.write("The purchase of",antec3,"lift up the purchase of",conseq3,"by",liftvalue3)
+    st.write("The purchase of",antec3,"lifts up the purchase of",conseq3,"by",liftvalue3)
     
     liftvalue4=rules["lift"].values[7]
     antec4=rules["antecedents"].values[7]
     conseq4=rules["consequents"].values[7]
-    st.write("The purchase of",antec4,"lift up the purchase of",conseq4,"by",liftvalue4)
+    st.write("The purchase of",antec4,"lifts up the purchase of",conseq4,"by",liftvalue4)
 
     unique=sales.groupby('InvoiceID')["Quantity"].count().reset_index()
     unique2=unique[unique["Quantity"]<30]
